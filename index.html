@@ -1,14 +1,15 @@
 <!DOCTYPE html>
+
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rompere il silenzio — Violenza di genere in Italia 2014–2024</title>
-<meta name="description" content="Dashboard interattiva sui dati ufficiali della violenza di genere in Italia 2014–2024, con fonti ISTAT, Ministero dell'Interno e Ministero della Giustizia.">
-<meta name="theme-color" content="#FBF6EF">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Rompere il silenzio — Gender-based violence in Italy 2014–2024</title>
+<meta content="Interactive dashboard on official gender-based violence data in Italy, 2014–2024, with ISTAT, Ministry of Interior and Ministry of Justice sources." name="description"/>
+<meta content="#FBF6EF" name="theme-color"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
 <style>
 :root {
   --paper: #FBF6EF; --ink: #2B211C; --orange: #E8662A; --red: #C4302B;
@@ -305,451 +306,421 @@ footer { background: var(--ink); color: var(--paper); padding: 72px 0 56px; }
   .colpita-grid { grid-template-columns: 1fr; }
 }
 </style>
-
-<template id="__bundler_thumbnail" data-bg-color="#FBF6EF">
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <!-- Nav bar -->
-    <rect x="0" y="0" width="1200" height="52" fill="#f4ede2"/>
-    <rect x="40" y="18" width="160" height="14" rx="4" fill="#2B211C" opacity=".18"/>
-    <rect x="300" y="20" width="60" height="10" rx="3" fill="#a99e92" opacity=".5"/>
-    <rect x="380" y="20" width="60" height="10" rx="3" fill="#a99e92" opacity=".5"/>
-    <rect x="460" y="20" width="70" height="10" rx="3" fill="#a99e92" opacity=".5"/>
-    <!-- Hero left col -->
-    <rect x="40" y="100" width="80" height="8" rx="3" fill="#a99e92" opacity=".5"/>
-    <rect x="40" y="130" width="420" height="44" rx="6" fill="#2B211C" opacity=".85"/>
-    <rect x="40" y="182" width="320" height="44" rx="6" fill="#E8662A" opacity=".75"/>
-    <rect x="40" y="234" width="380" height="44" rx="6" fill="#2B211C" opacity=".85"/>
-    <rect x="40" y="302" width="380" height="14" rx="4" fill="#a99e92" opacity=".4"/>
-    <rect x="40" y="322" width="310" height="14" rx="4" fill="#a99e92" opacity=".4"/>
-    <!-- Hero stats cards -->
-    <rect x="540" y="90" width="620" height="130" rx="14" fill="#f4ede2"/>
-    <rect x="554" y="90" width="6" height="130" rx="3" fill="#E8662A"/>
-    <rect x="572" y="116" width="200" height="40" rx="5" fill="#E8662A" opacity=".7"/>
-    <rect x="572" y="166" width="280" height="12" rx="3" fill="#a99e92" opacity=".5"/>
-    <rect x="572" y="184" width="220" height="12" rx="3" fill="#a99e92" opacity=".5"/>
-    <rect x="540" y="240" width="620" height="130" rx="14" fill="#f4ede2"/>
-    <rect x="554" y="240" width="6" height="130" rx="3" fill="#C4302B"/>
-    <rect x="572" y="266" width="160" height="40" rx="5" fill="#C4302B" opacity=".6"/>
-    <rect x="572" y="316" width="280" height="12" rx="3" fill="#a99e92" opacity=".5"/>
-    <rect x="540" y="390" width="620" height="130" rx="14" fill="#f4ede2"/>
-    <rect x="554" y="390" width="6" height="130" rx="3" fill="#E8662A"/>
-    <rect x="572" y="416" width="170" height="40" rx="5" fill="#E8662A" opacity=".7"/>
-    <rect x="572" y="466" width="260" height="12" rx="3" fill="#a99e92" opacity=".5"/>
-    <!-- Dark section: Il Sommerso -->
-    <rect x="0" y="570" width="1200" height="220" fill="#1c1410"/>
-    <rect x="40" y="596" width="50" height="8" rx="3" fill="#E8662A" opacity=".8"/>
-    <rect x="40" y="616" width="280" height="28" rx="5" fill="#FBF6EF" opacity=".7"/>
-    <!-- Waffle dots grid (simplified) -->
-    <g opacity=".8">
-      {Array.from({length:20}).map((_,i) => Array.from({length:4}).map((_,j) => 
-        `<circle cx="${540+i*18}" cy="${610+j*18}" r="6" fill="${i*4+j < 12 ? '#E8662A' : (i*4+j < 32 ? '#E8662A' : '#3a2e27')}" opacity="${i*4+j < 3 ? 1 : i*4+j < 32 ? 0.5 : 1}"/>`
+<template data-bg-color="#FBF6EF" id="__bundler_thumbnail">
+<svg viewbox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+<!-- Nav bar -->
+<rect fill="#f4ede2" height="52" width="1200" x="0" y="0"></rect>
+<rect fill="#2B211C" height="14" opacity=".18" rx="4" width="160" x="40" y="18"></rect>
+<rect fill="#a99e92" height="10" opacity=".5" rx="3" width="60" x="300" y="20"></rect>
+<rect fill="#a99e92" height="10" opacity=".5" rx="3" width="60" x="380" y="20"></rect>
+<rect fill="#a99e92" height="10" opacity=".5" rx="3" width="70" x="460" y="20"></rect>
+<!-- Hero left col -->
+<rect fill="#a99e92" height="8" opacity=".5" rx="3" width="80" x="40" y="100"></rect>
+<rect fill="#2B211C" height="44" opacity=".85" rx="6" width="420" x="40" y="130"></rect>
+<rect fill="#E8662A" height="44" opacity=".75" rx="6" width="320" x="40" y="182"></rect>
+<rect fill="#2B211C" height="44" opacity=".85" rx="6" width="380" x="40" y="234"></rect>
+<rect fill="#a99e92" height="14" opacity=".4" rx="4" width="380" x="40" y="302"></rect>
+<rect fill="#a99e92" height="14" opacity=".4" rx="4" width="310" x="40" y="322"></rect>
+<!-- Hero stats cards -->
+<rect fill="#f4ede2" height="130" rx="14" width="620" x="540" y="90"></rect>
+<rect fill="#E8662A" height="130" rx="3" width="6" x="554" y="90"></rect>
+<rect fill="#E8662A" height="40" opacity=".7" rx="5" width="200" x="572" y="116"></rect>
+<rect fill="#a99e92" height="12" opacity=".5" rx="3" width="280" x="572" y="166"></rect>
+<rect fill="#a99e92" height="12" opacity=".5" rx="3" width="220" x="572" y="184"></rect>
+<rect fill="#f4ede2" height="130" rx="14" width="620" x="540" y="240"></rect>
+<rect fill="#C4302B" height="130" rx="3" width="6" x="554" y="240"></rect>
+<rect fill="#C4302B" height="40" opacity=".6" rx="5" width="160" x="572" y="266"></rect>
+<rect fill="#a99e92" height="12" opacity=".5" rx="3" width="280" x="572" y="316"></rect>
+<rect fill="#f4ede2" height="130" rx="14" width="620" x="540" y="390"></rect>
+<rect fill="#E8662A" height="130" rx="3" width="6" x="554" y="390"></rect>
+<rect fill="#E8662A" height="40" opacity=".7" rx="5" width="170" x="572" y="416"></rect>
+<rect fill="#a99e92" height="12" opacity=".5" rx="3" width="260" x="572" y="466"></rect>
+<!-- Dark section: Il Sommerso -->
+<rect fill="#1c1410" height="220" width="1200" x="0" y="570"></rect>
+<rect fill="#E8662A" height="8" opacity=".8" rx="3" width="50" x="40" y="596"></rect>
+<rect fill="#FBF6EF" height="28" opacity=".7" rx="5" width="280" x="40" y="616"></rect>
+<!-- Waffle dots grid (simplified) -->
+<g opacity=".8">
+      {Array.from({length:20}).map((_,i) =&gt; Array.from({length:4}).map((_,j) =&gt; 
+        `<circle cx="${540+i*18}" cy="${610+j*18}" fill="${i*4+j &lt; 12 ? '#E8662A' : (i*4+j &lt; 32 ? '#E8662A' : '#3a2e27')}" opacity="${i*4+j &lt; 3 ? 1 : i*4+j &lt; 32 ? 0.5 : 1}" r="6"></circle>`
       ).join('')).join('')}
     </g>
-    <circle cx="540" cy="610" r="6" fill="#E8662A"/>
-    <circle cx="558" cy="610" r="6" fill="#E8662A"/>
-    <circle cx="576" cy="610" r="6" fill="#E8662A" opacity=".45"/>
-    <circle cx="594" cy="610" r="6" fill="#E8662A" opacity=".45"/>
-    <circle cx="612" cy="610" r="6" fill="#E8662A" opacity=".45"/>
-    <circle cx="630" cy="610" r="6" fill="#3a2e27"/>
-    <circle cx="648" cy="610" r="6" fill="#3a2e27"/>
-    <circle cx="666" cy="610" r="6" fill="#3a2e27"/>
-    <circle cx="540" cy="628" r="6" fill="#3a2e27"/>
-    <circle cx="558" cy="628" r="6" fill="#3a2e27"/>
-    <circle cx="576" cy="628" r="6" fill="#3a2e27"/>
-    <!-- 1522 badge -->
-    <rect x="1070" y="740" width="110" height="36" rx="18" fill="#E8662A"/>
-    <rect x="1082" y="754" width="8" height="8" rx="4" fill="white"/>
-    <rect x="1098" y="757" width="60" height="8" rx="4" fill="white" opacity=".9"/>
-  </svg>
+<circle cx="540" cy="610" fill="#E8662A" r="6"></circle>
+<circle cx="558" cy="610" fill="#E8662A" r="6"></circle>
+<circle cx="576" cy="610" fill="#E8662A" opacity=".45" r="6"></circle>
+<circle cx="594" cy="610" fill="#E8662A" opacity=".45" r="6"></circle>
+<circle cx="612" cy="610" fill="#E8662A" opacity=".45" r="6"></circle>
+<circle cx="630" cy="610" fill="#3a2e27" r="6"></circle>
+<circle cx="648" cy="610" fill="#3a2e27" r="6"></circle>
+<circle cx="666" cy="610" fill="#3a2e27" r="6"></circle>
+<circle cx="540" cy="628" fill="#3a2e27" r="6"></circle>
+<circle cx="558" cy="628" fill="#3a2e27" r="6"></circle>
+<circle cx="576" cy="628" fill="#3a2e27" r="6"></circle>
+<!-- 1522 badge -->
+<rect fill="#E8662A" height="36" rx="18" width="110" x="1070" y="740"></rect>
+<rect fill="white" height="8" rx="4" width="8" x="1082" y="754"></rect>
+<rect fill="white" height="8" opacity=".9" rx="4" width="60" x="1098" y="757"></rect>
+</svg>
 </template>
 </head>
 <body>
-
 <!-- Always-visible 1522 -->
-<a href="tel:1522" class="badge-1522" title="Numero antiviolenza e stalking — gratuito H24">
-  <span class="badge-dot"></span>
-  <span class="badge-label" data-it="1522 · Antiviolenza" data-en="1522 · Helpline">1522 · Antiviolenza</span>
+<a class="badge-1522" href="tel:1522" title="Numero antiviolenza e stalking — gratuito H24">
+<span class="badge-dot"></span>
+<span class="badge-label" data-en="1522 · Helpline" data-it="1522 · Antiviolenza">1522 · Antiviolenza</span>
 </a>
-
 <!-- Nav -->
 <nav id="main-nav">
-  <span class="nav-logo">Rompere il silenzio</span>
-  <ul class="nav-links" id="nav-links">
-    <li><a href="#sommerso" data-it="Sommerso" data-en="Iceberg">Sommerso</a></li>
-    <li><a href="#metodo" data-it="Metodo" data-en="Method">Metodo</a></li>
-    <li><a href="#tempo" data-it="Tempo" data-en="Time">Tempo</a></li>
-    <li><a href="#forme" data-it="Forme" data-en="Forms">Forme</a></li>
-    <li><a href="#autore" data-it="Autore" data-en="Actors">Autore</a></li>
-    <li><a href="#geografia" data-it="Mappa" data-en="Map">Mappa</a></li>
-    <li><a href="#strumenti" data-it="Strumenti" data-en="Tools">Strumenti</a></li>
-    <li><a href="#aiuto" data-it="Aiuto" data-en="Help">Aiuto</a></li>
-  </ul>
-  <div class="lang-toggle">
-    <button id="btn-it" class="active" onclick="setLang('it')">IT</button>
-    <button id="btn-en" onclick="setLang('en')">EN</button>
-  </div>
+<span class="nav-logo" data-en="Breaking the silence" data-it="Rompere il silenzio">Rompere il silenzio</span>
+<ul class="nav-links" id="nav-links">
+<li><a data-en="Iceberg" data-it="Sommerso" href="#sommerso">Sommerso</a></li>
+<li><a data-en="Method" data-it="Metodo" href="#metodo">Metodo</a></li>
+<li><a data-en="Time" data-it="Tempo" href="#tempo">Tempo</a></li>
+<li><a data-en="Forms" data-it="Forme" href="#forme">Forme</a></li>
+<li><a data-en="Actors" data-it="Autore" href="#autore">Autore</a></li>
+<li><a data-en="Map" data-it="Mappa" href="#geografia">Mappa</a></li>
+<li><a data-en="Tools" data-it="Strumenti" href="#strumenti">Strumenti</a></li>
+<li><a data-en="Help" data-it="Aiuto" href="#aiuto">Aiuto</a></li>
+</ul>
+<div class="lang-toggle">
+<button class="active" id="btn-it" onclick="setLang('it')">IT</button>
+<button id="btn-en" onclick="setLang('en')">EN</button>
+</div>
 </nav>
-
 <!-- Hero -->
 <section id="hero">
-  <div class="container">
-    <div>
-      <p class="hero-meta" data-it="Violenza di genere · Italia · 2014–2024" data-en="Gender-based violence · Italy · 2014–2024">Violenza di genere · Italia · 2014–2024</p>
-      <h1>Dietro ogni dato<br/>c'è <em class="highlight">una storia</em><br/>che merita ascolto.</h1>
-      <p class="hero-sub" data-it="Un percorso nei numeri ufficiali sulla violenza sulle donne in Italia: indagini ISTAT e dati del Ministero dell'Interno 2014–2024. Conoscere i numeri è il primo passo per cambiarli." data-en="A journey through official data on violence against women in Italy: ISTAT surveys and Ministry of Interior figures 2014–2024. Knowing the numbers is the first step toward changing them.">Un percorso nei numeri ufficiali sulla violenza sulle donne in Italia: indagini ISTAT e dati del Ministero dell'Interno 2014–2024. Conoscere i numeri è il primo passo per cambiarli.</p>
-      <div class="scroll-hint">
-        <div class="scroll-arrow">
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <span data-it="Esplora i dati" data-en="Explore the data">Esplora i dati</span>
-      </div>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="stat-num">31,5%</div>
-        <div class="stat-lbl" data-it="delle donne tra 16 e 70 anni ha subìto violenza fisica o sessuale nella vita · ISTAT 2014" data-en="of women aged 16–70 experienced physical or sexual violence in their lifetime · ISTAT 2014">delle donne tra 16 e 70 anni ha subìto violenza fisica o sessuale nella vita · ISTAT 2014</div>
-      </div>
-      <div class="hero-stat red">
-        <div class="stat-num">1 su 10</div>
-        <div class="stat-lbl" data-it="tra le sopravvissute ha denunciato la violenza alle autorità competenti" data-en="among survivors reported the violence to the relevant authorities">tra le sopravvissute ha denunciato la violenza alle autorità competenti</div>
-      </div>
-      <div class="hero-stat">
-        <div class="stat-num">+326%</div>
-        <div class="stat-lbl" data-it="gli ammonimenti del questore per violenza domestica dal 2014 al 2024" data-en="growth in police domestic violence warning orders from 2014 to 2024">gli ammonimenti del questore per violenza domestica dal 2014 al 2024</div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div>
+<p class="hero-meta" data-en="Gender-based violence · Italy · 2014–2024" data-it="Violenza di genere · Italia · 2014–2024">Violenza di genere · Italia · 2014–2024</p>
+<h1 data-en='Behind every figure&lt;br/&gt;there is &lt;em class="highlight"&gt;a story&lt;/em&gt;&lt;br/&gt;that deserves to be heard.' data-it="Dietro ogni dato&lt;br/&gt;c'è &lt;em class=&quot;highlight&quot;&gt;una storia&lt;/em&gt;&lt;br/&gt;che merita ascolto.">Dietro ogni dato<br/>c'è <em class="highlight">una storia</em><br/>che merita ascolto.</h1>
+<p class="hero-sub" data-en="A journey through official data on violence against women in Italy: ISTAT surveys and Ministry of Interior figures 2014–2024. Knowing the numbers is the first step toward changing them." data-it="Un percorso nei numeri ufficiali sulla violenza sulle donne in Italia: indagini ISTAT e dati del Ministero dell'Interno 2014–2024. Conoscere i numeri è il primo passo per cambiarli.">Un percorso nei numeri ufficiali sulla violenza sulle donne in Italia: indagini ISTAT e dati del Ministero dell'Interno 2014–2024. Conoscere i numeri è il primo passo per cambiarli.</p>
+<div class="scroll-hint">
+<div class="scroll-arrow">
+<svg fill="none" height="12" viewbox="0 0 12 12" width="12"><path d="M6 2v8M2.5 6.5 6 10l3.5-3.5" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path></svg>
+</div>
+<span data-en="Explore the data" data-it="Esplora i dati">Esplora i dati</span>
+</div>
+</div>
+<div class="hero-stats">
+<div class="hero-stat">
+<div class="stat-num" data-en="31.5%" data-it="31,5%">31,5%</div>
+<div class="stat-lbl" data-en="of women aged 16–70 experienced physical or sexual violence in their lifetime · ISTAT 2014" data-it="delle donne tra 16 e 70 anni ha subìto violenza fisica o sessuale nella vita · ISTAT 2014">delle donne tra 16 e 70 anni ha subìto violenza fisica o sessuale nella vita · ISTAT 2014</div>
+</div>
+<div class="hero-stat red">
+<div class="stat-num" data-en="1 in 10" data-it="1 su 10">1 su 10</div>
+<div class="stat-lbl" data-en="among survivors reported the violence to the relevant authorities" data-it="tra le sopravvissute ha denunciato la violenza alle autorità competenti">tra le sopravvissute ha denunciato la violenza alle autorità competenti</div>
+</div>
+<div class="hero-stat">
+<div class="stat-num">+326%</div>
+<div class="stat-lbl" data-en="growth in police domestic violence warning orders from 2014 to 2024" data-it="gli ammonimenti del questore per violenza domestica dal 2014 al 2024">gli ammonimenti del questore per violenza domestica dal 2014 al 2024</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- Il Sommerso -->
 <section id="sommerso">
-  <div class="container">
-    <div class="section-label" data-it="01 · Il Sommerso" data-en="01 · The Iceberg">01 · Il Sommerso</div>
-    <h2 class="section-title" data-it="Il numero che non vediamo" data-en="The number we don't see">Il numero che non vediamo</h2>
-    <p class="section-body" data-it="Ogni punto qui sotto rappresenta una donna su cento. Nella realtà, la violenza di genere è un fenomeno in larga parte invisibile: la stragrande maggioranza di chi la subisce non riesce — o non può — parlarne." data-en="Every dot below represents one woman in a hundred. In reality, gender-based violence is largely invisible: the vast majority of those who experience it cannot — or do not — speak out.">Ogni punto qui sotto rappresenta una donna su cento. Nella realtà, la violenza di genere è un fenomeno in larga parte invisibile: la stragrande maggioranza di chi la subisce non riesce — o non può — parlarne.</p>
-    <div class="sommerso-layout">
-      <div class="waffle-wrap">
-        <p class="waffle-title" data-it="Su 100 donne tra 16 e 70 anni..." data-en="Out of 100 women aged 16–70...">Su 100 donne tra 16 e 70 anni...</p>
-        <div class="waffle-grid" id="waffle" aria-label="Griglia di 100 punti: 32 hanno subìto violenza, 3 l'hanno denunciata"></div>
-        <div class="waffle-legend">
-          <div class="legend-row"><div class="legend-swatch" style="background:var(--orange);opacity:1;box-shadow:0 0 5px rgba(232,102,42,.5)"></div><span class="ll" data-it="Ha denunciato alle autorità (~3 su 100)" data-en="Reported to authorities (~3 in 100)">Ha denunciato alle autorità (~3 su 100)</span></div>
-          <div class="legend-row"><div class="legend-swatch" style="background:var(--orange);opacity:.45"></div><span class="ll" data-it="Ha subìto violenza (32 su 100)" data-en="Experienced violence (32 in 100)">Ha subìto violenza (32 su 100)</span></div>
-          <div class="legend-row"><div class="legend-swatch" style="background:#3a2e27"></div><span class="ll" data-it="Non ha subìto violenza" data-en="Did not experience violence">Non ha subìto violenza</span></div>
-        </div>
-        <div class="denunce-note" style="margin-top:24px;">
-          <p data-it="<strong>Solo 1 sopravvissuta su 10</strong> denuncia alle forze dell'ordine. Le motivazioni più frequenti: paura di non essere creduta, vergogna, dipendenza economica dal partner, timore di ritorsioni." data-en="<strong>Only 1 survivor in 10</strong> reports to law enforcement. The most common reasons: fear of not being believed, shame, financial dependence on the partner, fear of retaliation."><strong>Solo 1 sopravvissuta su 10</strong> denuncia alle forze dell'ordine. Le motivazioni più frequenti: paura di non essere creduta, vergogna, dipendenza economica dal partner, timore di ritorsioni.</p>
-        </div>
-      </div>
-      <div class="recency-col">
-        <p class="recency-label" data-it="Prevalenza della violenza fisica o sessuale" data-en="Prevalence of physical or sexual violence">Prevalenza della violenza fisica o sessuale</p>
-        <div class="recency-item">
-          <div class="rec-num"><span class="cnt" data-target="32">0</span><sup>%</sup></div>
-          <div class="rec-bar-track"><div class="rec-bar-fill" data-w="100"></div></div>
-          <div class="rec-desc" data-it="nella vita (donne 16–70 anni)" data-en="in their lifetime (women aged 16–70)">nella vita (donne 16–70 anni)</div>
-        </div>
-        <div class="recency-item">
-          <div class="rec-num"><span class="cnt" data-target="11">0</span><sup>%</sup></div>
-          <div class="rec-bar-track"><div class="rec-bar-fill" data-w="34"></div></div>
-          <div class="rec-desc" data-it="negli ultimi 5 anni" data-en="in the last 5 years">negli ultimi 5 anni</div>
-        </div>
-        <div class="recency-item">
-          <div class="rec-num"><span class="cnt" data-target="5">0</span><sup>%</sup></div>
-          <div class="rec-bar-track"><div class="rec-bar-fill" data-w="16"></div></div>
-          <div class="rec-desc" data-it="negli ultimi 12 mesi" data-en="in the last 12 months">negli ultimi 12 mesi</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-label" data-en="01 · The Iceberg" data-it="01 · Il Sommerso">01 · Il Sommerso</div>
+<h2 class="section-title" data-en="The number we don't see" data-it="Il numero che non vediamo">Il numero che non vediamo</h2>
+<p class="section-body" data-en="Every dot below represents one woman in a hundred. In reality, gender-based violence is largely invisible: the vast majority of those who experience it cannot — or do not — speak out." data-it="Ogni punto qui sotto rappresenta una donna su cento. Nella realtà, la violenza di genere è un fenomeno in larga parte invisibile: la stragrande maggioranza di chi la subisce non riesce — o non può — parlarne.">Ogni punto qui sotto rappresenta una donna su cento. Nella realtà, la violenza di genere è un fenomeno in larga parte invisibile: la stragrande maggioranza di chi la subisce non riesce — o non può — parlarne.</p>
+<div class="sommerso-layout">
+<div class="waffle-wrap">
+<p class="waffle-title" data-en="Out of 100 women aged 16–70..." data-it="Su 100 donne tra 16 e 70 anni...">Su 100 donne tra 16 e 70 anni...</p>
+<div aria-label="Griglia di 100 punti: 32 hanno subìto violenza, 3 l'hanno denunciata" class="waffle-grid" id="waffle"></div>
+<div class="waffle-legend">
+<div class="legend-row"><div class="legend-swatch" style="background:var(--orange);opacity:1;box-shadow:0 0 5px rgba(232,102,42,.5)"></div><span class="ll" data-en="Reported to authorities (~3 in 100)" data-it="Ha denunciato alle autorità (~3 su 100)">Ha denunciato alle autorità (~3 su 100)</span></div>
+<div class="legend-row"><div class="legend-swatch" style="background:var(--orange);opacity:.45"></div><span class="ll" data-en="Experienced violence (32 in 100)" data-it="Ha subìto violenza (32 su 100)">Ha subìto violenza (32 su 100)</span></div>
+<div class="legend-row"><div class="legend-swatch" style="background:#3a2e27"></div><span class="ll" data-en="Did not experience violence" data-it="Non ha subìto violenza">Non ha subìto violenza</span></div>
+</div>
+<div class="denunce-note" style="margin-top:24px;">
+<p data-en="&lt;strong&gt;Only 1 survivor in 10&lt;/strong&gt; reports to law enforcement. The most common reasons: fear of not being believed, shame, financial dependence on the partner, fear of retaliation." data-it="&lt;strong&gt;Solo 1 sopravvissuta su 10&lt;/strong&gt; denuncia alle forze dell'ordine. Le motivazioni più frequenti: paura di non essere creduta, vergogna, dipendenza economica dal partner, timore di ritorsioni."><strong>Solo 1 sopravvissuta su 10</strong> denuncia alle forze dell'ordine. Le motivazioni più frequenti: paura di non essere creduta, vergogna, dipendenza economica dal partner, timore di ritorsioni.</p>
+</div>
+</div>
+<div class="recency-col">
+<p class="recency-label" data-en="Prevalence of physical or sexual violence" data-it="Prevalenza della violenza fisica o sessuale">Prevalenza della violenza fisica o sessuale</p>
+<div class="recency-item">
+<div class="rec-num"><span class="cnt" data-target="32">0</span><sup>%</sup></div>
+<div class="rec-bar-track"><div class="rec-bar-fill" data-w="100"></div></div>
+<div class="rec-desc" data-en="in their lifetime (women aged 16–70)" data-it="nella vita (donne 16–70 anni)">nella vita (donne 16–70 anni)</div>
+</div>
+<div class="recency-item">
+<div class="rec-num"><span class="cnt" data-target="11">0</span><sup>%</sup></div>
+<div class="rec-bar-track"><div class="rec-bar-fill" data-w="34"></div></div>
+<div class="rec-desc" data-en="in the last 5 years" data-it="negli ultimi 5 anni">negli ultimi 5 anni</div>
+</div>
+<div class="recency-item">
+<div class="rec-num"><span class="cnt" data-target="5">0</span><sup>%</sup></div>
+<div class="rec-bar-track"><div class="rec-bar-fill" data-w="16"></div></div>
+<div class="rec-desc" data-en="in the last 12 months" data-it="negli ultimi 12 mesi">negli ultimi 12 mesi</div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-
 <!-- Metodo / come leggere i dati -->
 <section id="metodo">
-  <div class="container">
-    <div class="section-label" data-it="02 · Come leggere i dati" data-en="02 · How to read the data">02 · Come leggere i dati</div>
-    <h2 class="section-title" data-it="Subire, denunciare, essere protette: non sono la stessa cosa" data-en="Experiencing, reporting, being protected: not the same thing">Subire, denunciare, essere protette: non sono la stessa cosa</h2>
-    <p class="section-body" data-it="Una dashboard sulla violenza di genere deve tenere insieme tre piani diversi: l'esperienza subita, la parte che arriva alle autorità e la risposta istituzionale. Confonderli porta a leggere male il fenomeno." data-en="A dashboard on gender-based violence must keep together three different levels: lived experience, what reaches authorities, and institutional response. Confusing them leads to misreading the phenomenon.">Una dashboard sulla violenza di genere deve tenere insieme tre piani diversi: l'esperienza subita, la parte che arriva alle autorità e la risposta istituzionale. Confonderli porta a leggere male il fenomeno.</p>
-    <div class="method-grid">
-      <div class="method-card">
-        <div class="method-kicker">01 · Prevalenza</div>
-        <h3>Quante donne raccontano di aver subìto violenza</h3>
-        <p>Dati di indagine: stimano la violenza vissuta, compresa quella che non è mai diventata denuncia, procedimento o misura cautelare.</p>
-      </div>
-      <div class="method-card red">
-        <div class="method-kicker">02 · Denunce</div>
-        <h3>Quante situazioni arrivano alle istituzioni</h3>
-        <p>Le denunce non misurano tutta la violenza: misurano la parte emersa. Un aumento può indicare anche maggiore riconoscimento e propensione a denunciare.</p>
-      </div>
-      <div class="method-card">
-        <div class="method-kicker">03 · Tutele</div>
-        <h3>Come risponde il sistema</h3>
-        <p>Ammonimenti, allontanamenti, divieti di avvicinamento e ordini di protezione descrivono gli strumenti attivati dopo l'emersione del rischio.</p>
-      </div>
-    </div>
-    <div class="method-note fade-up">
-      <h3>La distanza tra esperienza e denuncia è il cuore del sommerso.</h3>
-      <p><strong>Violenza subita non significa violenza denunciata.</strong> La lettura più corretta è tenere separati i livelli: la prevalenza ci dice quanto il fenomeno è diffuso; le denunce indicano quanto arriva alle forze dell'ordine; le misure di tutela mostrano quanto viene intercettato e gestito dal sistema giudiziario o amministrativo.</p>
-    </div>
-  </div>
+<div class="container">
+<div class="section-label" data-en="02 · How to read the data" data-it="02 · Come leggere i dati">02 · Come leggere i dati</div>
+<h2 class="section-title" data-en="Experiencing, reporting, being protected: not the same thing" data-it="Subire, denunciare, essere protette: non sono la stessa cosa">Subire, denunciare, essere protette: non sono la stessa cosa</h2>
+<p class="section-body" data-en="A dashboard on gender-based violence must keep together three different levels: lived experience, what reaches authorities, and institutional response. Confusing them leads to misreading the phenomenon." data-it="Una dashboard sulla violenza di genere deve tenere insieme tre piani diversi: l'esperienza subita, la parte che arriva alle autorità e la risposta istituzionale. Confonderli porta a leggere male il fenomeno.">Una dashboard sulla violenza di genere deve tenere insieme tre piani diversi: l'esperienza subita, la parte che arriva alle autorità e la risposta istituzionale. Confonderli porta a leggere male il fenomeno.</p>
+<div class="method-grid">
+<div class="method-card">
+<div class="method-kicker" data-en="01 · Prevalence" data-it="01 · Prevalenza">01 · Prevalenza</div>
+<h3 data-en="How many women report having experienced violence" data-it="Quante donne raccontano di aver subìto violenza">Quante donne raccontano di aver subìto violenza</h3>
+<p data-en="Survey data: they estimate lived violence, including cases that never became a report, a proceeding or a protective measure." data-it="Dati di indagine: stimano la violenza vissuta, compresa quella che non è mai diventata denuncia, procedimento o misura cautelare.">Dati di indagine: stimano la violenza vissuta, compresa quella che non è mai diventata denuncia, procedimento o misura cautelare.</p>
+</div>
+<div class="method-card red">
+<div class="method-kicker" data-en="02 · Reports" data-it="02 · Denunce">02 · Denunce</div>
+<h3 data-en="How many situations reach institutions" data-it="Quante situazioni arrivano alle istituzioni">Quante situazioni arrivano alle istituzioni</h3>
+<p data-en="Police reports do not measure all violence: they measure the part that emerges. An increase may also indicate greater recognition and willingness to report." data-it="Le denunce non misurano tutta la violenza: misurano la parte emersa. Un aumento può indicare anche maggiore riconoscimento e propensione a denunciare.">Le denunce non misurano tutta la violenza: misurano la parte emersa. Un aumento può indicare anche maggiore riconoscimento e propensione a denunciare.</p>
+</div>
+<div class="method-card">
+<div class="method-kicker" data-en="03 · Protection measures" data-it="03 · Tutele">03 · Tutele</div>
+<h3 data-en="How the system responds" data-it="Come risponde il sistema">Come risponde il sistema</h3>
+<p data-en="Police warnings, exclusion orders, proximity bans and civil protection orders describe the tools activated once risk has emerged." data-it="Ammonimenti, allontanamenti, divieti di avvicinamento e ordini di protezione descrivono gli strumenti attivati dopo l'emersione del rischio.">Ammonimenti, allontanamenti, divieti di avvicinamento e ordini di protezione descrivono gli strumenti attivati dopo l'emersione del rischio.</p>
+</div>
+</div>
+<div class="method-note fade-up">
+<h3 data-en="The gap between experience and reporting is the core of the hidden figure." data-it="La distanza tra esperienza e denuncia è il cuore del sommerso.">La distanza tra esperienza e denuncia è il cuore del sommerso.</h3>
+<p data-en="&lt;strong&gt;Experienced violence does not mean reported violence.&lt;/strong&gt; The most accurate reading keeps the levels separate: prevalence shows how widespread the phenomenon is; reports show what reaches law enforcement; protection measures show what is intercepted and managed by the judicial or administrative system." data-it="&lt;strong&gt;Violenza subita non significa violenza denunciata.&lt;/strong&gt; La lettura più corretta è tenere separati i livelli: la prevalenza ci dice quanto il fenomeno è diffuso; le denunce indicano quanto arriva alle forze dell'ordine; le misure di tutela mostrano quanto viene intercettato e gestito dal sistema giudiziario o amministrativo."><strong>Violenza subita non significa violenza denunciata.</strong> La lettura più corretta è tenere separati i livelli: la prevalenza ci dice quanto il fenomeno è diffuso; le denunce indicano quanto arriva alle forze dell'ordine; le misure di tutela mostrano quanto viene intercettato e gestito dal sistema giudiziario o amministrativo.</p>
+</div>
+</div>
 </section>
-
-
 <!-- Nel Tempo -->
 <section id="tempo">
-  <div class="container">
-    <div class="section-label" data-it="02 · Nel Tempo" data-en="02 · Over Time">02 · Nel Tempo</div>
-    <h2 class="section-title" data-it="Dieci anni di dati ufficiali" data-en="Ten years of official data">Dieci anni di dati ufficiali</h2>
-    <p class="section-body" data-it="Le denunce per maltrattamenti sono cresciute del 90% dal 2014, segnale di maggiore consapevolezza e disponibilità a denunciare. Gli ammonimenti del questore, strumento extragiudiziale e rapido, sono cresciuti del 326% nello stesso periodo." data-en="Reports of domestic violence have grown 90% since 2014, signaling greater awareness and willingness to report. Police warning orders — a fast extrajudicial tool — have grown 326% in the same period.">Le denunce per maltrattamenti sono cresciute del 90% dal 2014, segnale di maggiore consapevolezza e disponibilità a denunciare. Gli ammonimenti del questore, strumento extragiudiziale e rapido, sono cresciuti del 326% nello stesso periodo.</p>
-    <div class="charts-2col">
-      <div class="chart-card fade-up">
-        <p class="chart-tag" data-it="Fonte: SDI-SSD Ministero dell'Interno · Italia 2014–2023" data-en="Source: SDI-SSD Ministry of Interior · Italy 2014–2023">Fonte: SDI-SSD Min. Interno · 2014–2023</p>
-        <h3 data-it="Denunce per maltrattamenti" data-en="Domestic violence reports">Denunce per maltrattamenti</h3>
-        <div class="chart-delta">+90%</div>
-        <svg id="svg-maltr" class="chart-svg" viewBox="0 0 440 170"></svg>
-      </div>
-      <div class="chart-card fade-up">
-        <p class="chart-tag" data-it="Fonte: Ministero dell'Interno · Italia 2014–2024" data-en="Source: Ministry of Interior · Italy 2014–2024">Fonte: Min. Interno · 2014–2024</p>
-        <h3 data-it="Ammonimenti del Questore" data-en="Police warning orders">Ammonimenti del Questore</h3>
-        <div class="chart-delta red">+326%</div>
-        <svg id="svg-ammon" class="chart-svg" viewBox="0 0 440 170"></svg>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-label" data-en="02 · Over Time" data-it="02 · Nel Tempo">02 · Nel Tempo</div>
+<h2 class="section-title" data-en="Ten years of official data" data-it="Dieci anni di dati ufficiali">Dieci anni di dati ufficiali</h2>
+<p class="section-body" data-en="Reports of domestic violence have grown 90% since 2014, signaling greater awareness and willingness to report. Police warning orders — a fast extrajudicial tool — have grown 326% in the same period." data-it="Le denunce per maltrattamenti sono cresciute del 90% dal 2014, segnale di maggiore consapevolezza e disponibilità a denunciare. Gli ammonimenti del questore, strumento extragiudiziale e rapido, sono cresciuti del 326% nello stesso periodo.">Le denunce per maltrattamenti sono cresciute del 90% dal 2014, segnale di maggiore consapevolezza e disponibilità a denunciare. Gli ammonimenti del questore, strumento extragiudiziale e rapido, sono cresciuti del 326% nello stesso periodo.</p>
+<div class="charts-2col">
+<div class="chart-card fade-up">
+<p class="chart-tag" data-en="Source: SDI-SSD Ministry of Interior · Italy 2014–2023" data-it="Fonte: SDI-SSD Ministero dell'Interno · Italia 2014–2023">Fonte: SDI-SSD Min. Interno · 2014–2023</p>
+<h3 data-en="Domestic violence reports" data-it="Denunce per maltrattamenti">Denunce per maltrattamenti</h3>
+<div class="chart-delta">+90%</div>
+<svg class="chart-svg" id="svg-maltr" viewbox="0 0 440 170"></svg>
+</div>
+<div class="chart-card fade-up">
+<p class="chart-tag" data-en="Source: Ministry of Interior · Italy 2014–2024" data-it="Fonte: Ministero dell'Interno · Italia 2014–2024">Fonte: Min. Interno · 2014–2024</p>
+<h3 data-en="Police warning orders" data-it="Ammonimenti del Questore">Ammonimenti del Questore</h3>
+<div class="chart-delta red">+326%</div>
+<svg class="chart-svg" id="svg-ammon" viewbox="0 0 440 170"></svg>
+</div>
+</div>
+</div>
 </section>
-
-
 <!-- Le forme della violenza -->
 <section id="forme">
-  <div class="container">
-    <div class="section-label" data-it="04 · Le forme della violenza" data-en="04 · Forms of violence">04 · Le forme della violenza</div>
-    <h2 class="section-title" data-it="Non un solo gesto, ma molte forme" data-en="Not one act, but many forms">Non un solo gesto, ma molte forme</h2>
-    <p class="section-body" data-it="La categoria generale “violenza fisica o sessuale” contiene esperienze diverse: minacce, aggressioni, coercizione sessuale, stupro o tentato stupro. Visualizzarle separatamente aiuta a non rendere astratto ciò che accade." data-en="The broad category “physical or sexual violence” includes different experiences: threats, assaults, sexual coercion, rape or attempted rape. Showing them separately prevents the phenomenon from becoming abstract.">La categoria generale “violenza fisica o sessuale” contiene esperienze diverse: minacce, aggressioni, coercizione sessuale, stupro o tentato stupro. Visualizzarle separatamente aiuta a non rendere astratto ciò che accade.</p>
-    <div class="forms-layout">
-      <div class="big-number-card fade-up">
-        <div class="big-number">32<sup>%</sup></div>
-        <p><strong>Donne 16–70 anni che hanno subìto violenza fisica o sessuale nel corso della vita.</strong><br>Il dato è una sintesi: sotto questa percentuale vivono esperienze molto diverse tra loro.</p>
-      </div>
-      <div class="forms-list fade-up">
-        <p class="bar-group-title">Forme dichiarate · % nella vita</p>
-        <div class="bar-row" id="forms-bars"></div>
-        <p class="small-method">Fonte: ISTAT, Indagine sulla sicurezza delle donne 2014. Le categorie possono sovrapporsi: una stessa persona può aver subìto più forme di violenza.</p>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-label" data-en="04 · Forms of violence" data-it="04 · Le forme della violenza">04 · Le forme della violenza</div>
+<h2 class="section-title" data-en="Not one act, but many forms" data-it="Non un solo gesto, ma molte forme">Non un solo gesto, ma molte forme</h2>
+<p class="section-body" data-en="The broad category “physical or sexual violence” includes different experiences: threats, assaults, sexual coercion, rape or attempted rape. Showing them separately prevents the phenomenon from becoming abstract." data-it="La categoria generale “violenza fisica o sessuale” contiene esperienze diverse: minacce, aggressioni, coercizione sessuale, stupro o tentato stupro. Visualizzarle separatamente aiuta a non rendere astratto ciò che accade.">La categoria generale “violenza fisica o sessuale” contiene esperienze diverse: minacce, aggressioni, coercizione sessuale, stupro o tentato stupro. Visualizzarle separatamente aiuta a non rendere astratto ciò che accade.</p>
+<div class="forms-layout">
+<div class="big-number-card fade-up">
+<div class="big-number">32<sup>%</sup></div>
+<p data-en="&lt;strong&gt;Women aged 16–70 who experienced physical or sexual violence in their lifetime.&lt;/strong&gt;&lt;br&gt;This figure is a synthesis: beneath this percentage are very different lived experiences." data-it="&lt;strong&gt;Donne 16–70 anni che hanno subìto violenza fisica o sessuale nel corso della vita.&lt;/strong&gt;&lt;br&gt;Il dato è una sintesi: sotto questa percentuale vivono esperienze molto diverse tra loro."><strong>Donne 16–70 anni che hanno subìto violenza fisica o sessuale nel corso della vita.</strong><br/>Il dato è una sintesi: sotto questa percentuale vivono esperienze molto diverse tra loro.</p>
+</div>
+<div class="forms-list fade-up">
+<p class="bar-group-title" data-en="Reported forms · % lifetime" data-it="Forme dichiarate · % nella vita">Forme dichiarate · % nella vita</p>
+<div class="bar-row" id="forms-bars"></div>
+<p class="small-method" data-en="Source: ISTAT, Survey on women's safety 2014. Categories may overlap: the same person may have experienced more than one form of violence." data-it="Fonte: ISTAT, Indagine sulla sicurezza delle donne 2014. Le categorie possono sovrapporsi: una stessa persona può aver subìto più forme di violenza.">Fonte: ISTAT, Indagine sulla sicurezza delle donne 2014. Le categorie possono sovrapporsi: una stessa persona può aver subìto più forme di violenza.</p>
+</div>
+</div>
+</div>
 </section>
-
-
 <!-- Chi Agisce -->
 <section id="autore">
-  <div class="container">
-    <div class="section-label" data-it="03 · Chi Agisce" data-en="03 · Perpetrators">03 · Chi Agisce</div>
-    <h2 class="section-title" data-it="Quasi sempre qualcuno di conosciuto" data-en="Almost always someone known">Quasi sempre qualcuno di conosciuto</h2>
-    <p class="section-body" data-it="Il mito dello sconosciuto è pericoloso. I dati ISTAT mostrano che la violenza nasce il più delle volte all'interno di relazioni — di coppia, familiari, amicali. Riconoscerla è più difficile quando l'autore è qualcuno di cui ci fidiamo." data-en="The myth of the stranger is dangerous. ISTAT data shows that violence most often occurs within relationships — intimate, family, or social. Recognizing it is harder when the perpetrator is someone we trust.">Il mito dello sconosciuto è pericoloso. I dati ISTAT mostrano che la violenza nasce il più delle volte all'interno di relazioni — di coppia, familiari, amicali. Riconoscerla è più difficile quando l'autore è qualcuno di cui ci fidiamo.</p>
-    <div class="autore-layout">
-      <div class="insight-card">
-        <div class="insight-big">2<sup>/3</sup></div>
-        <p class="insight-txt" data-it="dei casi di violenza fisica o sessuale proviene da qualcuno che la sopravvissuta conosceva: partner, ex-partner, parente, amico o collega." data-en="of cases of physical or sexual violence come from someone the survivor knew: partner, ex-partner, relative, friend, or colleague.">dei casi di violenza fisica o sessuale proviene da qualcuno che la sopravvissuta conosceva: partner, ex-partner, parente, amico o collega.</p>
-        <p class="insight-src">Fonte: ISTAT, Indagine sulla sicurezza delle donne 2014</p>
-      </div>
-      <div class="bars-col">
-        <p class="bar-group-title" data-it="% donne che hanno subìto violenza (non-partner, lifetime)" data-en="% women experiencing violence (non-partner, lifetime)">% donne che hanno subìto violenza (non-partner, lifetime)</p>
-        <div class="bar-row" id="autore-bars"></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-label" data-en="03 · Perpetrators" data-it="03 · Chi Agisce">03 · Chi Agisce</div>
+<h2 class="section-title" data-en="Almost always someone known" data-it="Quasi sempre qualcuno di conosciuto">Quasi sempre qualcuno di conosciuto</h2>
+<p class="section-body" data-en="The myth of the stranger is dangerous. ISTAT data shows that violence most often occurs within relationships — intimate, family, or social. Recognizing it is harder when the perpetrator is someone we trust." data-it="Il mito dello sconosciuto è pericoloso. I dati ISTAT mostrano che la violenza nasce il più delle volte all'interno di relazioni — di coppia, familiari, amicali. Riconoscerla è più difficile quando l'autore è qualcuno di cui ci fidiamo.">Il mito dello sconosciuto è pericoloso. I dati ISTAT mostrano che la violenza nasce il più delle volte all'interno di relazioni — di coppia, familiari, amicali. Riconoscerla è più difficile quando l'autore è qualcuno di cui ci fidiamo.</p>
+<div class="autore-layout">
+<div class="insight-card">
+<div class="insight-big">2<sup>/3</sup></div>
+<p class="insight-txt" data-en="of cases of physical or sexual violence come from someone the survivor knew: partner, ex-partner, relative, friend, or colleague." data-it="dei casi di violenza fisica o sessuale proviene da qualcuno che la sopravvissuta conosceva: partner, ex-partner, parente, amico o collega.">dei casi di violenza fisica o sessuale proviene da qualcuno che la sopravvissuta conosceva: partner, ex-partner, parente, amico o collega.</p>
+<p class="insight-src" data-en="Source: ISTAT, Survey on women's safety 2014" data-it="Fonte: ISTAT, Indagine sulla sicurezza delle donne 2014">Fonte: ISTAT, Indagine sulla sicurezza delle donne 2014</p>
+</div>
+<div class="bars-col">
+<p class="bar-group-title" data-en="% women experiencing violence (non-partner, lifetime)" data-it="% donne che hanno subìto violenza (non-partner, lifetime)">% donne che hanno subìto violenza (non-partner, lifetime)</p>
+<div class="bar-row" id="autore-bars"></div>
+</div>
+</div>
+</div>
 </section>
-
-
 <!-- Relazioni e prossimità -->
 <section id="relazioni">
-  <div class="container">
-    <div class="section-label" data-it="06 · Relazioni e prossimità" data-en="06 · Relationships and proximity">06 · Relazioni e prossimità</div>
-    <h2 class="section-title" data-it="La violenza spesso nasce dentro legami già esistenti" data-en="Violence often emerges within existing relationships">La violenza spesso nasce dentro legami già esistenti</h2>
-    <p class="section-body" data-it="Partner, ex partner, familiari, conoscenti, colleghi o amici: il dato non racconta solo “chi agisce”, ma anche quanto la violenza possa entrare negli spazi della fiducia e della dipendenza affettiva, economica o quotidiana." data-en="Partners, former partners, relatives, acquaintances, colleagues or friends: the data does not only show “who acts”, but how violence can enter spaces of trust and emotional, economic or everyday dependency.">Partner, ex partner, familiari, conoscenti, colleghi o amici: il dato non racconta solo “chi agisce”, ma anche quanto la violenza possa entrare negli spazi della fiducia e della dipendenza affettiva, economica o quotidiana.</p>
-    <div class="relations-layout">
-      <div class="relation-callout fade-up">
-        <div class="big-number">14<sup>%</sup></div>
-        <p><strong>Tra le donne che hanno o hanno avuto un partner</strong>, il 14% dichiara di aver subìto violenza fisica o sessuale da un partner attuale o da un ex partner nel corso della vita.</p>
-      </div>
-      <div class="relations-bars fade-up">
-        <p class="bar-group-title">Autore dichiarato · lettura per relazione</p>
-        <div class="bar-row" id="relations-bars"></div>
-        <p class="small-method">Attenzione: le percentuali non sono sommabili perché cambiano le basi di riferimento e le categorie possono sovrapporsi.</p>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-label" data-en="06 · Relationships and proximity" data-it="06 · Relazioni e prossimità">06 · Relazioni e prossimità</div>
+<h2 class="section-title" data-en="Violence often emerges within existing relationships" data-it="La violenza spesso nasce dentro legami già esistenti">La violenza spesso nasce dentro legami già esistenti</h2>
+<p class="section-body" data-en="Partners, former partners, relatives, acquaintances, colleagues or friends: the data does not only show “who acts”, but how violence can enter spaces of trust and emotional, economic or everyday dependency." data-it="Partner, ex partner, familiari, conoscenti, colleghi o amici: il dato non racconta solo “chi agisce”, ma anche quanto la violenza possa entrare negli spazi della fiducia e della dipendenza affettiva, economica o quotidiana.">Partner, ex partner, familiari, conoscenti, colleghi o amici: il dato non racconta solo “chi agisce”, ma anche quanto la violenza possa entrare negli spazi della fiducia e della dipendenza affettiva, economica o quotidiana.</p>
+<div class="relations-layout">
+<div class="relation-callout fade-up">
+<div class="big-number">14<sup>%</sup></div>
+<p data-en="&lt;strong&gt;Among women who have or have had a partner&lt;/strong&gt;, 14% report having experienced physical or sexual violence from a current or former partner in their lifetime." data-it="&lt;strong&gt;Tra le donne che hanno o hanno avuto un partner&lt;/strong&gt;, il 14% dichiara di aver subìto violenza fisica o sessuale da un partner attuale o da un ex partner nel corso della vita."><strong>Tra le donne che hanno o hanno avuto un partner</strong>, il 14% dichiara di aver subìto violenza fisica o sessuale da un partner attuale o da un ex partner nel corso della vita.</p>
+</div>
+<div class="relations-bars fade-up">
+<p class="bar-group-title" data-en="Reported perpetrator · relationship view" data-it="Autore dichiarato · lettura per relazione">Autore dichiarato · lettura per relazione</p>
+<div class="bar-row" id="relations-bars"></div>
+<p class="small-method" data-en="Note: percentages cannot be added together because reference groups differ and categories may overlap." data-it="Attenzione: le percentuali non sono sommabili perché cambiano le basi di riferimento e le categorie possono sovrapporsi.">Attenzione: le percentuali non sono sommabili perché cambiano le basi di riferimento e le categorie possono sovrapporsi.</p>
+</div>
+</div>
+</div>
 </section>
-
-
 <!-- Chi è Colpita -->
 <section id="colpita">
-  <div class="container">
-    <div class="section-label" data-it="04 · Chi è Colpita" data-en="04 · Who is Affected">04 · Chi è Colpita</div>
-    <h2 class="section-title" data-it="Non esiste un profilo unico" data-en="There is no single profile">Non esiste un profilo unico</h2>
-    <p class="section-body" data-it="La violenza attraversa ogni fascia sociale, ogni età, ogni livello d'istruzione. Alcuni profili mostrano vulnerabilità specifiche che i dati ISTAT aiutano a illuminare." data-en="Violence crosses every social background, age, and education level. Some profiles show specific vulnerabilities that ISTAT data helps illuminate.">La violenza attraversa ogni fascia sociale, ogni età, ogni livello d'istruzione. Alcuni profili mostrano vulnerabilità specifiche che i dati ISTAT aiutano a illuminare.</p>
-    <div class="colpita-grid">
-      <div class="colpita-card fade-up">
-        <h3 data-it="Stato civile · % nella vita" data-en="Marital status · % lifetime">Stato civile · % nella vita</h3>
-        <div class="bar-row" id="marital-bars"></div>
-      </div>
-      <div class="colpita-card fade-up">
-        <h3 data-it="Titolo di studio · % nella vita" data-en="Education level · % lifetime">Titolo di studio · % nella vita</h3>
-        <div class="bar-row" id="edu-bars"></div>
-        <div class="paradox-note" style="margin-top:20px;">
-          <strong data-it="Il paradosso dell'istruzione:" data-en="The education paradox:">Il paradosso dell'istruzione:</strong>
-          <span data-it=" le donne con titolo più alto riportano tassi più elevati, riflettendo spesso una maggiore consapevolezza e propensione a riconoscere la violenza." data-en=" women with higher education report higher rates, often reflecting greater awareness and willingness to recognize and name violence."> le donne con titolo più alto riportano tassi più elevati, riflettendo spesso una maggiore consapevolezza e propensione a riconoscere la violenza.</span>
-        </div>
-      </div>
-      <div class="colpita-card fade-up">
-        <h3 data-it="Fascia d'età · % nella vita" data-en="Age group · % lifetime">Fascia d'età · % nella vita</h3>
-        <div class="bar-row" id="age-bars"></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-label" data-en="04 · Who is Affected" data-it="04 · Chi è Colpita">04 · Chi è Colpita</div>
+<h2 class="section-title" data-en="There is no single profile" data-it="Non esiste un profilo unico">Non esiste un profilo unico</h2>
+<p class="section-body" data-en="Violence crosses every social background, age, and education level. Some profiles show specific vulnerabilities that ISTAT data helps illuminate." data-it="La violenza attraversa ogni fascia sociale, ogni età, ogni livello d'istruzione. Alcuni profili mostrano vulnerabilità specifiche che i dati ISTAT aiutano a illuminare.">La violenza attraversa ogni fascia sociale, ogni età, ogni livello d'istruzione. Alcuni profili mostrano vulnerabilità specifiche che i dati ISTAT aiutano a illuminare.</p>
+<div class="colpita-grid">
+<div class="colpita-card fade-up">
+<h3 data-en="Marital status · % lifetime" data-it="Stato civile · % nella vita">Stato civile · % nella vita</h3>
+<div class="bar-row" id="marital-bars"></div>
+</div>
+<div class="colpita-card fade-up">
+<h3 data-en="Education level · % lifetime" data-it="Titolo di studio · % nella vita">Titolo di studio · % nella vita</h3>
+<div class="bar-row" id="edu-bars"></div>
+<div class="paradox-note" style="margin-top:20px;">
+<strong data-en="The education paradox:" data-it="Il paradosso dell'istruzione:">Il paradosso dell'istruzione:</strong>
+<span data-en=" women with higher education report higher rates, often reflecting greater awareness and willingness to recognize and name violence." data-it=" le donne con titolo più alto riportano tassi più elevati, riflettendo spesso una maggiore consapevolezza e propensione a riconoscere la violenza."> le donne con titolo più alto riportano tassi più elevati, riflettendo spesso una maggiore consapevolezza e propensione a riconoscere la violenza.</span>
+</div>
+</div>
+<div class="colpita-card fade-up">
+<h3 data-en="Age group · % lifetime" data-it="Fascia d'età · % nella vita">Fascia d'età · % nella vita</h3>
+<div class="bar-row" id="age-bars"></div>
+</div>
+</div>
+</div>
 </section>
-
-
 <!-- Geografia dell'emersione -->
 <section id="geografia">
-  <div class="container">
-    <div class="section-label" data-it="08 · Geografia dell'emersione" data-en="08 · Geography of emergence">08 · Geografia dell'emersione</div>
-    <h2 class="section-title" data-it="Una mappa da leggere con cautela" data-en="A map to read with caution">Una mappa da leggere con cautela</h2>
-    <p class="section-body" data-it="Le differenze territoriali non vanno lette come una semplice classifica delle regioni “più” o “meno” violente. Possono riflettere anche diversa consapevolezza, capacità di riconoscere la violenza, accesso ai servizi e disponibilità a raccontarla." data-en="Territorial differences should not be read as a simple ranking of “more” or “less” violent regions. They may also reflect different levels of awareness, recognition, access to services and willingness to report.">Le differenze territoriali non vanno lette come una semplice classifica delle regioni “più” o “meno” violente. Possono riflettere anche diversa consapevolezza, capacità di riconoscere la violenza, accesso ai servizi e disponibilità a raccontarla.</p>
-    <div class="map-layout">
-      <div class="map-card fade-up">
-        <div class="map-wrap">
-          <svg id="italy-map" class="italy-map" viewBox="0 0 960 1160" role="img" aria-label="Mappa interattiva delle regioni italiane incorporata nel file">
-            <g id="region-shapes"></g>
-            <g id="region-labels"></g>
-          </svg>
-          <div id="map-status" class="map-status">Mappa incorporata nel file HTML</div>
-        </div>
-        <div class="map-legend"><span>24%</span><div class="map-gradient"></div><span>39%</span></div>
-      </div>
-      <div>
-        <div class="map-panel fade-up" id="map-panel">
-          <div class="map-panel-kicker">Regione selezionata</div>
-          <h3 id="map-region-name">Italia</h3>
-          <div class="map-value"><span id="map-main-value">32</span><sup>%</sup></div>
-          <p id="map-main-desc">Passa sopra una regione per visualizzare i dati. Il valore principale indica la quota di donne 16–70 anni che dichiarano di aver subìto violenza fisica o sessuale nel corso della vita.</p>
-          <div class="map-metrics">
-            <div class="map-metric"><span>Fisica</span><strong id="map-phy">20%</strong></div>
-            <div class="map-metric"><span>Sessuale</span><strong id="map-sex">21%</strong></div>
-            <div class="map-metric"><span>Stupro/tentato</span><strong id="map-rape">5%</strong></div>
-            <div class="map-metric"><span>Fonte</span><strong>2014</strong></div>
-          </div>
-          <p>La mappa usa dati ISTAT di prevalenza regionale. Non rappresenta il numero assoluto di denunce.</p><p class="map-source-note">Mappa vettoriale incorporata nel file HTML, ricavata da una base SVG pubblica di Wikimedia Commons. Nessuna chiamata esterna necessaria nella preview o su GitHub Pages.</p>
-        </div>
-        <div class="region-rank" id="region-rank"></div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-label" data-en="08 · Geography of emergence" data-it="08 · Geografia dell'emersione">08 · Geografia dell'emersione</div>
+<h2 class="section-title" data-en="A map to read with caution" data-it="Una mappa da leggere con cautela">Una mappa da leggere con cautela</h2>
+<p class="section-body" data-en="Territorial differences should not be read as a simple ranking of “more” or “less” violent regions. They may also reflect different levels of awareness, recognition, access to services and willingness to report." data-it="Le differenze territoriali non vanno lette come una semplice classifica delle regioni “più” o “meno” violente. Possono riflettere anche diversa consapevolezza, capacità di riconoscere la violenza, accesso ai servizi e disponibilità a raccontarla.">Le differenze territoriali non vanno lette come una semplice classifica delle regioni “più” o “meno” violente. Possono riflettere anche diversa consapevolezza, capacità di riconoscere la violenza, accesso ai servizi e disponibilità a raccontarla.</p>
+<div class="map-layout">
+<div class="map-card fade-up">
+<div class="map-wrap">
+<svg aria-label="Embedded interactive map of Italian regions" class="italy-map" id="italy-map" role="img" viewbox="0 0 960 1160">
+<g id="region-shapes"></g>
+<g id="region-labels"></g>
+</svg>
+<div class="map-status" data-en="Map embedded in the HTML file" data-it="Mappa incorporata nel file HTML" id="map-status">Mappa incorporata nel file HTML</div>
+</div>
+<div class="map-legend"><span>24%</span><div class="map-gradient"></div><span>39%</span></div>
+</div>
+<div>
+<div class="map-panel fade-up" id="map-panel">
+<div class="map-panel-kicker" data-en="Selected region" data-it="Regione selezionata">Regione selezionata</div>
+<h3 data-en="Italy" data-it="Italia" id="map-region-name">Italia</h3>
+<div class="map-value"><span id="map-main-value">32</span><sup>%</sup></div>
+<p data-en="Hover over a region to view the data. The main value shows the share of women aged 16–70 who report having experienced physical or sexual violence in their lifetime." data-it="Passa sopra una regione per visualizzare i dati. Il valore principale indica la quota di donne 16–70 anni che dichiarano di aver subìto violenza fisica o sessuale nel corso della vita." id="map-main-desc">Passa sopra una regione per visualizzare i dati. Il valore principale indica la quota di donne 16–70 anni che dichiarano di aver subìto violenza fisica o sessuale nel corso della vita.</p>
+<div class="map-metrics">
+<div class="map-metric"><span data-en="Physical" data-it="Fisica">Fisica</span><strong id="map-phy">20%</strong></div>
+<div class="map-metric"><span data-en="Sexual" data-it="Sessuale">Sessuale</span><strong id="map-sex">21%</strong></div>
+<div class="map-metric"><span data-en="Rape/attempted" data-it="Stupro/tentato">Stupro/tentato</span><strong id="map-rape">5%</strong></div>
+<div class="map-metric"><span data-en="Source" data-it="Fonte">Fonte</span><strong>2014</strong></div>
+</div>
+<p data-en="The map uses ISTAT regional prevalence data. It does not represent the absolute number of reports." data-it="La mappa usa dati ISTAT di prevalenza regionale. Non rappresenta il numero assoluto di denunce.">La mappa usa dati ISTAT di prevalenza regionale. Non rappresenta il numero assoluto di denunce.</p><p class="map-source-note" data-en="Vector map embedded in the HTML file, derived from a public SVG base from Wikimedia Commons. No external calls are required in preview or on GitHub Pages." data-it="Mappa vettoriale incorporata nel file HTML, ricavata da una base SVG pubblica di Wikimedia Commons. Nessuna chiamata esterna necessaria nella preview o su GitHub Pages.">Mappa vettoriale incorporata nel file HTML, ricavata da una base SVG pubblica di Wikimedia Commons. Nessuna chiamata esterna necessaria nella preview o su GitHub Pages.</p>
+</div>
+<div class="region-rank" id="region-rank"></div>
+</div>
+</div>
+</div>
 </section>
-
-
-
 <!-- Gli Strumenti -->
 <section id="strumenti">
-  <div class="container">
-    <div class="section-label" data-it="09 · Gli Strumenti" data-en="09 · Legal Tools">09 · Gli Strumenti</div>
-    <h2 class="section-title" data-it="Più tutele, più risposte" data-en="More protection, more response">Più tutele, più risposte</h2>
-    <p class="section-body" data-it="Il Codice Rosso (L. 69/2019) ha trasformato la risposta istituzionale, quadruplicando le misure cautelari penali in un solo anno. Ma gli strumenti non sono tutti uguali: alcuni appartengono al penale, altri al civile, altri alla prevenzione amministrativa." data-en="The Codice Rosso law (L. 69/2019) transformed the institutional response, quadrupling criminal protective measures in a single year. But tools differ: some are criminal measures, some civil, some administrative prevention.">Il Codice Rosso (L. 69/2019) ha trasformato la risposta istituzionale, quadruplicando le misure cautelari penali in un solo anno. Ma gli strumenti non sono tutti uguali: alcuni appartengono al penale, altri al civile, altri alla prevenzione amministrativa.</p>
-    <div class="strumenti-hero fade-up">
-      <div>
-        <div class="code-rosso-badge">2019 · Codice Rosso</div>
-        <div class="strumenti-big">12.235</div>
-        <p class="strumenti-sub" data-it="allontanamenti cautelari dalla casa familiare in un solo anno: quasi 4 volte il dato del 2018" data-en="emergency exclusion orders in a single year: nearly 4 times the 2018 figure">allontanamenti cautelari in un anno — quasi 4× il dato 2018</p>
-      </div>
-      <p class="strumenti-cta" data-it="Ogni misura di protezione è un tentativo di creare distanza tra una donna e chi la sta mettendo in pericolo. Gli strumenti esistono: la questione è sapere che ci sono, accedervi in tempo e farli funzionare." data-en="Every protection measure is an attempt to create distance between a woman and the person putting her at risk. The tools exist: the key is knowing they exist, accessing them in time and making them work.">Ogni misura di protezione è un tentativo di creare distanza tra una donna e chi la sta mettendo in pericolo. Gli strumenti esistono: la questione è sapere che ci sono, accedervi in tempo e farli funzionare.</p>
-    </div>
-    <div class="tool-summary fade-up">
-      <div class="tool-mini"><strong>6.498</strong><span>ammonimenti del Questore per violenza domestica nel 2024.</span></div>
-      <div class="tool-mini"><strong>12.313</strong><span>divieti di avvicinamento autorizzati nel 2024.</span></div>
-      <div class="tool-mini"><strong>4.499</strong><span>allontanamenti cautelari dalla casa familiare nel 2024.</span></div>
-    </div>
-    <div class="charts-3col">
-      <div class="chart-card fade-up">
-        <p class="chart-tag" data-it="Fonte: Ministero della Giustizia · 2015–2024" data-en="Source: Ministry of Justice · 2015–2024">Fonte: Min. Giustizia · 2015–2024</p>
-        <h3 data-it="Allontanamenti cautelari dalla casa" data-en="Emergency exclusion orders">Allontanamenti cautelari dalla casa</h3>
-        <div class="chart-delta red">↑ dopo Codice Rosso</div>
-        <svg id="svg-allont" class="chart-svg" viewBox="0 0 440 170"></svg>
-      </div>
-      <div class="chart-card fade-up">
-        <p class="chart-tag" data-it="Fonte: Ministero della Giustizia · 2020–2024" data-en="Source: Ministry of Justice · 2020–2024">Fonte: Min. Giustizia · 2020–2024</p>
-        <h3 data-it="Divieti di avvicinamento" data-en="Restraining proximity bans">Divieti di avvicinamento</h3>
-        <div class="chart-delta red">12.313</div>
-        <svg id="svg-divieti" class="chart-svg" viewBox="0 0 440 170"></svg>
-      </div>
-      <div class="chart-card fade-up">
-        <p class="chart-tag" data-it="Fonte: Ministero della Giustizia · 2014–2024" data-en="Source: Ministry of Justice · 2014–2024">Fonte: Min. Giustizia · 2014–2024</p>
-        <h3 data-it="Ordini di protezione civili" data-en="Civil protection orders">Ordini di protezione civili</h3>
-        <div class="chart-delta">530–670 / anno</div>
-        <svg id="svg-ordini" class="chart-svg" viewBox="0 0 440 170"></svg>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="section-label" data-en="09 · Legal Tools" data-it="09 · Gli Strumenti">09 · Gli Strumenti</div>
+<h2 class="section-title" data-en="More protection, more response" data-it="Più tutele, più risposte">Più tutele, più risposte</h2>
+<p class="section-body" data-en="The Codice Rosso law (L. 69/2019) transformed the institutional response, quadrupling criminal protective measures in a single year. But tools differ: some are criminal measures, some civil, some administrative prevention." data-it="Il Codice Rosso (L. 69/2019) ha trasformato la risposta istituzionale, quadruplicando le misure cautelari penali in un solo anno. Ma gli strumenti non sono tutti uguali: alcuni appartengono al penale, altri al civile, altri alla prevenzione amministrativa.">Il Codice Rosso (L. 69/2019) ha trasformato la risposta istituzionale, quadruplicando le misure cautelari penali in un solo anno. Ma gli strumenti non sono tutti uguali: alcuni appartengono al penale, altri al civile, altri alla prevenzione amministrativa.</p>
+<div class="strumenti-hero fade-up">
+<div>
+<div class="code-rosso-badge" data-en="2019 · Codice Rosso law" data-it="2019 · Codice Rosso">2019 · Codice Rosso</div>
+<div class="strumenti-big">12.235</div>
+<p class="strumenti-sub" data-en="emergency exclusion orders in a single year: nearly 4 times the 2018 figure" data-it="allontanamenti cautelari dalla casa familiare in un solo anno: quasi 4 volte il dato del 2018">allontanamenti cautelari in un anno — quasi 4× il dato 2018</p>
+</div>
+<p class="strumenti-cta" data-en="Every protection measure is an attempt to create distance between a woman and the person putting her at risk. The tools exist: the key is knowing they exist, accessing them in time and making them work." data-it="Ogni misura di protezione è un tentativo di creare distanza tra una donna e chi la sta mettendo in pericolo. Gli strumenti esistono: la questione è sapere che ci sono, accedervi in tempo e farli funzionare.">Ogni misura di protezione è un tentativo di creare distanza tra una donna e chi la sta mettendo in pericolo. Gli strumenti esistono: la questione è sapere che ci sono, accedervi in tempo e farli funzionare.</p>
+</div>
+<div class="tool-summary fade-up">
+<div class="tool-mini"><strong>6.498</strong><span data-en="police warning orders for domestic violence in 2024." data-it="ammonimenti del Questore per violenza domestica nel 2024.">ammonimenti del Questore per violenza domestica nel 2024.</span></div>
+<div class="tool-mini"><strong>12.313</strong><span data-en="proximity bans authorized in 2024." data-it="divieti di avvicinamento autorizzati nel 2024.">divieti di avvicinamento autorizzati nel 2024.</span></div>
+<div class="tool-mini"><strong>4.499</strong><span data-en="emergency exclusion orders from the family home in 2024." data-it="allontanamenti cautelari dalla casa familiare nel 2024.">allontanamenti cautelari dalla casa familiare nel 2024.</span></div>
+</div>
+<div class="charts-3col">
+<div class="chart-card fade-up">
+<p class="chart-tag" data-en="Source: Ministry of Justice · 2015–2024" data-it="Fonte: Ministero della Giustizia · 2015–2024">Fonte: Min. Giustizia · 2015–2024</p>
+<h3 data-en="Emergency exclusion orders" data-it="Allontanamenti cautelari dalla casa">Allontanamenti cautelari dalla casa</h3>
+<div class="chart-delta red" data-en="↑ after Codice Rosso" data-it="↑ dopo Codice Rosso">↑ dopo Codice Rosso</div>
+<svg class="chart-svg" id="svg-allont" viewbox="0 0 440 170"></svg>
+</div>
+<div class="chart-card fade-up">
+<p class="chart-tag" data-en="Source: Ministry of Justice · 2020–2024" data-it="Fonte: Ministero della Giustizia · 2020–2024">Fonte: Min. Giustizia · 2020–2024</p>
+<h3 data-en="Restraining proximity bans" data-it="Divieti di avvicinamento">Divieti di avvicinamento</h3>
+<div class="chart-delta red">12.313</div>
+<svg class="chart-svg" id="svg-divieti" viewbox="0 0 440 170"></svg>
+</div>
+<div class="chart-card fade-up">
+<p class="chart-tag" data-en="Source: Ministry of Justice · 2014–2024" data-it="Fonte: Ministero della Giustizia · 2014–2024">Fonte: Min. Giustizia · 2014–2024</p>
+<h3 data-en="Civil protection orders" data-it="Ordini di protezione civili">Ordini di protezione civili</h3>
+<div class="chart-delta" data-en="530–670 / year" data-it="530–670 / anno">530–670 / anno</div>
+<svg class="chart-svg" id="svg-ordini" viewbox="0 0 440 170"></svg>
+</div>
+</div>
+</div>
 </section>
-
-
-
 <!-- Cosa fare se hai bisogno di aiuto -->
 <section id="aiuto">
-  <div class="container">
-    <div class="section-label" data-it="10 · Se hai bisogno di aiuto" data-en="10 · If you need help">10 · Se hai bisogno di aiuto</div>
-    <h2 class="section-title" data-it="I numeri servono solo se aprono una strada" data-en="Numbers matter only if they open a path">I numeri servono solo se aprono una strada</h2>
-    <div class="help-grid">
-      <div class="help-card red">
-        <h3>112</h3>
-        <p><strong>Pericolo immediato.</strong><br>Chiama il Numero Unico di Emergenza se sei in una situazione di rischio attuale o imminente.</p>
-      </div>
-      <div class="help-card">
-        <h3>1522</h3>
-        <p><strong>Ascolto, orientamento, antiviolenza e stalking.</strong><br>Numero gratuito, attivo 24 ore su 24. Puoi chiamare o contattare il servizio anche online tramite <a href="https://www.1522.eu" target="_blank" rel="noopener">1522.eu</a>.</p>
-      </div>
-      <div class="help-card">
-        <h3>Rete</h3>
-        <p><strong>Non restare sola.</strong><br>Se puoi farlo in sicurezza, parlane con una persona fidata, un centro antiviolenza, il medico di base o un servizio territoriale.</p>
-      </div>
-    </div>
-    <p class="help-disclaimer">Questa dashboard ha finalità informative e divulgative. Non sostituisce l'aiuto professionale, legale, medico o psicologico. Se pensi di essere in pericolo, cerca supporto immediato attraverso i canali di emergenza o i servizi antiviolenza.</p>
-  </div>
+<div class="container">
+<div class="section-label" data-en="10 · If you need help" data-it="10 · Se hai bisogno di aiuto">10 · Se hai bisogno di aiuto</div>
+<h2 class="section-title" data-en="Numbers matter only if they open a path" data-it="I numeri servono solo se aprono una strada">I numeri servono solo se aprono una strada</h2>
+<div class="help-grid">
+<div class="help-card red">
+<h3>112</h3>
+<p data-en="&lt;strong&gt;Immediate danger.&lt;/strong&gt;&lt;br&gt;Call the single emergency number if you are in a current or imminent risk situation." data-it="&lt;strong&gt;Pericolo immediato.&lt;/strong&gt;&lt;br&gt;Chiama il Numero Unico di Emergenza se sei in una situazione di rischio attuale o imminente."><strong>Pericolo immediato.</strong><br/>Chiama il Numero Unico di Emergenza se sei in una situazione di rischio attuale o imminente.</p>
+</div>
+<div class="help-card">
+<h3>1522</h3>
+<p data-en='&lt;strong&gt;Listening, guidance, anti-violence and stalking support.&lt;/strong&gt;&lt;br&gt;Free number, available 24/7. You can call or contact the service online through &lt;a href="https://www.1522.eu" target="_blank" rel="noopener"&gt;1522.eu&lt;/a&gt;.' data-it='&lt;strong&gt;Ascolto, orientamento, antiviolenza e stalking.&lt;/strong&gt;&lt;br&gt;Numero gratuito, attivo 24 ore su 24. Puoi chiamare o contattare il servizio anche online tramite &lt;a href="https://www.1522.eu" target="_blank" rel="noopener"&gt;1522.eu&lt;/a&gt;.'><strong>Ascolto, orientamento, antiviolenza e stalking.</strong><br/>Numero gratuito, attivo 24 ore su 24. Puoi chiamare o contattare il servizio anche online tramite <a href="https://www.1522.eu" rel="noopener" target="_blank">1522.eu</a>.</p>
+</div>
+<div class="help-card">
+<h3 data-en="Support network" data-it="Rete">Rete</h3>
+<p data-en="&lt;strong&gt;Do not stay alone.&lt;/strong&gt;&lt;br&gt;If you can do so safely, talk to someone you trust, an anti-violence centre, your GP or a local service." data-it="&lt;strong&gt;Non restare sola.&lt;/strong&gt;&lt;br&gt;Se puoi farlo in sicurezza, parlane con una persona fidata, un centro antiviolenza, il medico di base o un servizio territoriale."><strong>Non restare sola.</strong><br/>Se puoi farlo in sicurezza, parlane con una persona fidata, un centro antiviolenza, il medico di base o un servizio territoriale.</p>
+</div>
+</div>
+<p class="help-disclaimer" data-en="This dashboard is for informational and educational purposes. It does not replace professional, legal, medical or psychological help. If you think you are in danger, seek immediate support through emergency channels or anti-violence services." data-it="Questa dashboard ha finalità informative e divulgative. Non sostituisce l'aiuto professionale, legale, medico o psicologico. Se pensi di essere in pericolo, cerca supporto immediato attraverso i canali di emergenza o i servizi antiviolenza.">Questa dashboard ha finalità informative e divulgative. Non sostituisce l'aiuto professionale, legale, medico o psicologico. Se pensi di essere in pericolo, cerca supporto immediato attraverso i canali di emergenza o i servizi antiviolenza.</p>
+</div>
 </section>
-
-
 <!-- Footer -->
 <footer>
-  <div class="container">
-    <div class="footer-top">
-      <div>
-        <div class="footer-1522">1522</div>
-        <div class="footer-1522-label" data-it="Numero antiviolenza e stalking" data-en="Anti-violence and stalking helpline">Numero antiviolenza e stalking</div>
-        <p class="footer-1522-desc" data-it="Gratuito, attivo 24h su 24, 7 giorni su 7. Operatrici specializzate. Puoi chiamare o scrivere su WhatsApp. L'anonimato è garantito." data-en="Free, available 24/7. Specialist operators. Call or WhatsApp. Anonymity guaranteed.">Gratuito, attivo 24h su 24, 7 giorni su 7. Operatrici specializzate. Puoi chiamare o scrivere su WhatsApp. L'anonimato è garantito.</p>
-      </div>
-      <div class="footer-links">
-        <h4 data-it="Risorse utili" data-en="Useful resources">Risorse utili</h4>
-        <ul>
-          <li><a href="https://www.1522.eu" target="_blank" rel="noopener">1522.eu — Sito ufficiale</a></li>
-          <li><a href="https://www.istat.it" target="_blank" rel="noopener">ISTAT — Indagine sulla sicurezza delle donne</a></li>
-          <li><a href="https://www.interno.gov.it" target="_blank" rel="noopener">Ministero dell'Interno — Dati SDI-SSD</a></li>
-          <li><a href="https://www.giustizia.it" target="_blank" rel="noopener">Ministero della Giustizia — Misure di protezione</a></li>
-        </ul>
-      </div>
-    </div>
-    <hr class="footer-divider">
-    <p class="footer-sources">
-      <strong>Fonti dei dati:</strong>
+<div class="container">
+<div class="footer-top">
+<div>
+<div class="footer-1522">1522</div>
+<div class="footer-1522-label" data-en="Anti-violence and stalking helpline" data-it="Numero antiviolenza e stalking">Numero antiviolenza e stalking</div>
+<p class="footer-1522-desc" data-en="Free, available 24/7. Specialist operators. Call or WhatsApp. Anonymity guaranteed." data-it="Gratuito, attivo 24h su 24, 7 giorni su 7. Operatrici specializzate. Puoi chiamare o scrivere su WhatsApp. L'anonimato è garantito.">Gratuito, attivo 24h su 24, 7 giorni su 7. Operatrici specializzate. Puoi chiamare o scrivere su WhatsApp. L'anonimato è garantito.</p>
+</div>
+<div class="footer-links">
+<h4 data-en="Useful resources" data-it="Risorse utili">Risorse utili</h4>
+<ul>
+<li><a data-en="1522.eu — Official website" data-it="1522.eu — Sito ufficiale" href="https://www.1522.eu" rel="noopener" target="_blank">1522.eu — Sito ufficiale</a></li>
+<li><a data-en="ISTAT — Survey on women's safety" data-it="ISTAT — Indagine sulla sicurezza delle donne" href="https://www.istat.it" rel="noopener" target="_blank">ISTAT — Indagine sulla sicurezza delle donne</a></li>
+<li><a data-en="Ministry of Interior — SDI-SSD data" data-it="Ministero dell'Interno — Dati SDI-SSD" href="https://www.interno.gov.it" rel="noopener" target="_blank">Ministero dell'Interno — Dati SDI-SSD</a></li>
+<li><a data-en="Ministry of Justice — Protection measures" data-it="Ministero della Giustizia — Misure di protezione" href="https://www.giustizia.it" rel="noopener" target="_blank">Ministero della Giustizia — Misure di protezione</a></li>
+</ul>
+</div>
+</div>
+<hr class="footer-divider"/>
+<p class="footer-sources" data-en="&lt;strong&gt;Data sources:&lt;/strong&gt; ISTAT – Survey on women's safety 2014 (lifetime prevalence, data by marital status, education and perpetrator type) · Ministry of Interior – SDI-SSD operational database: reports for domestic abuse under art. 572 of the Italian Criminal Code and police warning orders 2014–2024 · Ministry of Justice – Protection measures: civil protection orders and criminal precautionary measures 2014–2024 · Own processing of national data for Italy. Percentages on violence refer to the female population aged 16–70." data-it="&lt;strong&gt;Fonti dei dati:&lt;/strong&gt; ISTAT – Indagine sulla sicurezza delle donne 2014 (prevalenza lifetime, dati per stato civile, istruzione, tipo di autore) · Ministero dell'Interno – Database operativo SDI-SSD: denunce per maltrattamenti art. 572 c.p. e ammonimenti del questore 2014–2024 · Ministero della Giustizia – Misure di protezione: ordini civili e misure cautelari penali 2014–2024 · Elaborazione propria su dati nazionali (Italia). Le percentuali sulla violenza si riferiscono alla popolazione femminile 16–70 anni.">
+<strong>Fonti dei dati:</strong>
       ISTAT – Indagine sulla sicurezza delle donne 2014 (prevalenza lifetime, dati per stato civile, istruzione, tipo di autore) ·
       Ministero dell'Interno – Database operativo SDI-SSD: denunce per maltrattamenti art. 572 c.p. e ammonimenti del questore 2014–2024 ·
       Ministero della Giustizia – Misure di protezione: ordini civili e misure cautelari penali 2014–2024 ·
       Elaborazione propria su dati nazionali (Italia). Le percentuali sulla violenza si riferiscono alla popolazione femminile 16–70 anni.
     </p>
-  </div>
+</div>
 </footer>
-
-<noscript><div style="padding:16px 24px;background:#C4302B;color:#fff;font-family:Arial,sans-serif;text-align:center;">Questa dashboard richiede JavaScript attivo per visualizzare grafici e interazioni.</div></noscript>
-
+<noscript><div style="padding:16px 24px;background:#C4302B;color:#fff;font-family:Arial,sans-serif;text-align:center;">Questa dashboard richiede JavaScript attivo per visualizzare grafici e interazioni. / This dashboard requires JavaScript to display charts and interactions.</div></noscript>
 <div class="tooltip" id="tooltip"></div>
-
 <script>
 // ===== DATA =====
 const DATA = {
@@ -814,12 +785,12 @@ const DATA = {
     { it:'Tentato strangolamento / ustione', en:'Attempted strangling / burning', v:2 }
   ],
   relationships: [
-    { it:'Uomo non partner', en:'Non-partner man', v:25, note:'% su donne 16–70 anni' },
-    { it:'Partner attuale o ex partner', en:'Current or former partner', v:14, note:'% su donne che hanno/hanno avuto partner' },
-    { it:'Ex partner', en:'Former partner', v:19, note:'% su donne che hanno un ex partner' },
-    { it:'Partner attuale', en:'Current partner', v:5, note:'% su donne che hanno un partner' },
-    { it:'Persona conosciuta non partner', en:'Known non-partner', v:13, note:'% su donne 16–70 anni' },
-    { it:'Sconosciuto', en:'Stranger', v:13, note:'% su donne 16–70 anni' }
+    { it:'Uomo non partner', en:'Non-partner man', v:25, note:{it:'% su donne 16–70 anni', en:'% of women aged 16–70'} },
+    { it:'Partner attuale o ex partner', en:'Current or former partner', v:14, note:{it:'% su donne che hanno/hanno avuto partner', en:'% of women who have/have had a partner'} },
+    { it:'Ex partner', en:'Former partner', v:19, note:{it:'% su donne che hanno un ex partner', en:'% of women who have a former partner'} },
+    { it:'Partner attuale', en:'Current partner', v:5, note:{it:'% su donne che hanno un partner', en:'% of women who have a partner'} },
+    { it:'Persona conosciuta non partner', en:'Known non-partner', v:13, note:{it:'% su donne 16–70 anni', en:'% of women aged 16–70'} },
+    { it:'Sconosciuto', en:'Stranger', v:13, note:{it:'% su donne 16–70 anni', en:'% of women aged 16–70'} }
   ],
   regionData: {
     "Piemonte": { phsex:32, phy:19, sex:22, rape:6 },
@@ -857,7 +828,13 @@ function setLang(l) {
   });
   document.getElementById('btn-it').classList.toggle('active', l === 'it');
   document.getElementById('btn-en').classList.toggle('active', l === 'en');
+  document.documentElement.lang = l;
+  document.title = l === 'en'
+    ? 'Breaking the silence — Gender-based violence in Italy 2014–2024'
+    : 'Rompere il silenzio — Violenza di genere in Italia 2014–2024';
   renderAllBars();
+  updateMapPanel(currentMapRegion);
+  renderRegionRank();
 }
 
 // ===== WAFFLE =====
@@ -909,7 +886,7 @@ function drawLine(svgId, cfg) {
   if (annotIdx >= 0) {
     const ax = xS(annotIdx);
     svg.appendChild(svgEl('line', { x1: ax, x2: ax, y1: PT, y2: PT + CH, stroke: R, 'stroke-width': '1.5', 'stroke-dasharray': '4,3' }));
-    svg.appendChild(svgEl('text', { x: ax + 4, y: PT + 11, 'font-size': '8.5', fill: R, 'font-family': 'Hanken Grotesk, sans-serif', 'font-weight': '700' }, 'Codice Rosso'));
+    svg.appendChild(svgEl('text', { x: ax + 4, y: PT + 11, 'font-size': '8.5', fill: R, 'font-family': 'Hanken Grotesk, sans-serif', 'font-weight': '700' }, lang === 'en' ? 'Codice Rosso' : 'Codice Rosso'));
   }
 
   // Line path
@@ -932,7 +909,7 @@ function drawLine(svgId, cfg) {
     const hit = svgEl('circle', { cx, cy, r: '18', fill: 'transparent', cursor: 'pointer' });
     const dot = svgEl('circle', { cx, cy, r: '3.5', fill: color, opacity: i === pts.length - 1 ? '1' : '0', 'pointer-events': 'none' });
     dot.style.transition = 'opacity .1s';
-    hit.addEventListener('mouseenter', () => { dot.setAttribute('opacity', '1'); tip.style.opacity = '1'; tip.textContent = `${yrs[i]}: ${vals[i].toLocaleString('it')}`; });
+    hit.addEventListener('mouseenter', () => { dot.setAttribute('opacity', '1'); tip.style.opacity = '1'; tip.textContent = `${yrs[i]}: ${vals[i].toLocaleString(lang === 'en' ? 'en-US' : 'it-IT')}`; });
     hit.addEventListener('mousemove', e => { tip.style.left = (e.clientX + 14) + 'px'; tip.style.top = (e.clientY - 32) + 'px'; });
     hit.addEventListener('mouseleave', () => { dot.setAttribute('opacity', i === pts.length - 1 ? '1' : '0'); tip.style.opacity = '0'; });
     svg.appendChild(hit);
@@ -945,7 +922,8 @@ function makeBar(label, pct, maxPct, color, note) {
   const fillW = (pct / maxPct * 100).toFixed(1);
   const d = document.createElement('div');
   d.className = 'bar-item';
-  const noteHtml = note ? `<div class="small-method" style="margin-top:4px">${note}</div>` : '';
+  const noteText = note ? (typeof note === 'object' ? (note[lang] || note.it) : note) : '';
+  const noteHtml = noteText ? `<div class="small-method" style="margin-top:4px">${noteText}</div>` : '';
   d.innerHTML = `<div class="bar-top"><span class="bar-name">${label}</span><span class="bar-pct" style="color:${color}">${pct}%</span></div><div class="bar-track"><div class="bar-fill" style="background:${color}" data-w="${fillW}"></div></div>${noteHtml}`;
   return d;
 }
@@ -980,6 +958,19 @@ function renderAllBars() {
 // Base visuale ricavata dalla mappa SVG pubblica “Regions of Italy” di Wikimedia Commons.
 const INLINE_REGION_PATHS = {"Piemonte":{"label":[111,250],"paths":["M 152,92 L 150,92 L 143,96 L 145,98 L 145,101 L 140,104 L 134,111 L 129,112 L 127,114 L 128,114 L 132,119 L 132,122 L 133,123 L 131,128 L 126,133 L 123,133 L 121,136 L 122,139 L 117,145 L 115,146 L 112,146 L 111,145 L 110,146 L 110,151 L 108,155 L 106,165 L 107,166 L 107,169 L 112,177 L 110,179 L 111,187 L 108,192 L 99,198 L 82,197 L 75,194 L 68,202 L 65,202 L 64,201 L 62,203 L 56,204 L 53,207 L 49,206 L 53,208 L 55,211 L 54,214 L 49,220 L 51,224 L 50,229 L 44,234 L 42,233 L 39,234 L 34,239 L 32,239 L 30,243 L 25,243 L 23,241 L 21,241 L 19,243 L 15,243 L 12,245 L 14,252 L 18,252 L 20,254 L 21,257 L 21,266 L 22,266 L 26,271 L 31,272 L 33,270 L 35,270 L 37,272 L 39,272 L 42,276 L 41,279 L 42,284 L 47,290 L 44,294 L 39,293 L 36,296 L 38,297 L 38,299 L 36,301 L 35,305 L 29,310 L 31,312 L 31,314 L 33,315 L 36,319 L 36,321 L 33,323 L 33,327 L 35,331 L 37,332 L 38,335 L 40,336 L 41,342 L 42,341 L 46,341 L 49,344 L 53,343 L 56,347 L 58,347 L 60,350 L 62,349 L 63,350 L 67,350 L 68,352 L 71,352 L 72,353 L 73,352 L 76,352 L 79,349 L 87,348 L 89,346 L 92,346 L 95,349 L 93,353 L 94,354 L 98,353 L 103,356 L 111,356 L 110,354 L 112,351 L 114,350 L 119,350 L 120,349 L 119,337 L 120,335 L 126,330 L 126,326 L 130,322 L 130,319 L 134,313 L 139,312 L 146,317 L 148,313 L 153,310 L 161,311 L 165,313 L 168,313 L 173,310 L 176,311 L 180,306 L 185,305 L 185,299 L 191,294 L 195,294 L 199,299 L 201,298 L 204,301 L 205,304 L 209,304 L 210,285 L 206,280 L 203,280 L 199,277 L 199,273 L 197,271 L 194,271 L 192,269 L 192,262 L 190,262 L 187,259 L 187,256 L 184,256 L 183,257 L 169,257 L 166,255 L 164,244 L 158,239 L 157,228 L 152,221 L 157,215 L 163,215 L 166,216 L 169,219 L 170,224 L 171,223 L 171,216 L 174,213 L 182,211 L 182,209 L 179,204 L 172,198 L 171,192 L 168,189 L 168,187 L 170,184 L 167,180 L 162,176 L 161,171 L 159,168 L 159,166 L 161,163 L 161,154 L 169,145 L 171,141 L 171,135 L 170,132 L 167,132 L 162,127 L 162,125 L 159,121 L 152,115 L 152,113 L 150,110 L 150,108 L 153,102 L 152,101 L 153,99 L 153,93 Z"]},"Valle d'Aosta":{"label":[70,175],"paths":["M 105,153 L 100,153 L 99,152 L 95,153 L 93,151 L 93,149 L 90,147 L 89,148 L 82,147 L 77,150 L 76,152 L 72,153 L 71,155 L 69,156 L 66,155 L 64,156 L 62,155 L 60,157 L 57,157 L 54,161 L 51,159 L 48,161 L 46,161 L 44,159 L 44,157 L 41,155 L 41,158 L 40,159 L 32,162 L 29,165 L 26,165 L 25,167 L 26,175 L 28,178 L 30,178 L 33,181 L 37,180 L 41,183 L 40,193 L 39,194 L 41,196 L 41,198 L 43,198 L 47,203 L 51,203 L 52,204 L 57,200 L 61,200 L 63,198 L 67,199 L 74,191 L 77,191 L 83,194 L 88,193 L 93,195 L 98,195 L 105,191 L 108,186 L 108,183 L 107,182 L 108,176 L 105,172 L 103,166 Z"]},"Lombardia":{"label":[257,187],"paths":["M 296,73 L 287,76 L 286,79 L 283,82 L 284,84 L 282,88 L 284,93 L 289,92 L 292,96 L 292,99 L 288,103 L 288,106 L 293,112 L 293,116 L 289,119 L 281,120 L 279,118 L 280,114 L 275,111 L 274,105 L 275,104 L 271,102 L 267,104 L 264,104 L 261,107 L 258,107 L 257,106 L 257,109 L 254,112 L 251,111 L 249,113 L 246,113 L 244,111 L 242,111 L 239,109 L 236,104 L 232,100 L 232,89 L 233,88 L 231,91 L 228,91 L 225,88 L 221,88 L 220,94 L 221,95 L 221,102 L 223,105 L 223,107 L 220,113 L 220,115 L 217,118 L 217,120 L 213,125 L 206,131 L 207,133 L 206,136 L 200,140 L 201,141 L 200,149 L 203,150 L 206,153 L 206,156 L 203,159 L 202,163 L 200,165 L 197,165 L 193,163 L 190,163 L 188,161 L 190,158 L 189,153 L 187,151 L 187,149 L 179,143 L 179,141 L 182,139 L 183,136 L 182,134 L 181,135 L 179,135 L 177,133 L 174,134 L 174,137 L 175,138 L 172,146 L 164,155 L 164,164 L 162,167 L 164,173 L 173,183 L 173,186 L 171,188 L 174,191 L 175,197 L 181,202 L 185,208 L 186,214 L 184,216 L 183,215 L 175,216 L 174,217 L 174,224 L 171,227 L 169,227 L 167,225 L 165,219 L 158,218 L 156,221 L 161,229 L 160,231 L 161,238 L 167,243 L 168,252 L 170,254 L 183,254 L 188,252 L 190,253 L 190,258 L 194,260 L 196,263 L 195,268 L 200,269 L 202,272 L 202,276 L 207,277 L 213,284 L 214,287 L 213,288 L 213,292 L 215,291 L 218,291 L 219,292 L 219,287 L 217,284 L 217,282 L 222,276 L 215,268 L 220,262 L 222,254 L 225,249 L 230,245 L 233,245 L 234,244 L 236,245 L 236,241 L 237,240 L 239,240 L 242,243 L 244,241 L 247,241 L 249,244 L 249,247 L 253,248 L 253,246 L 255,244 L 258,245 L 261,248 L 262,246 L 264,245 L 264,239 L 266,238 L 268,239 L 271,243 L 272,242 L 275,242 L 278,247 L 279,251 L 293,253 L 299,258 L 303,260 L 309,260 L 317,266 L 322,266 L 324,265 L 332,256 L 337,259 L 337,263 L 339,263 L 348,267 L 351,263 L 358,261 L 364,261 L 365,262 L 385,261 L 389,264 L 387,260 L 380,258 L 377,255 L 376,251 L 370,252 L 367,248 L 369,246 L 368,245 L 366,245 L 363,247 L 359,247 L 357,245 L 357,243 L 353,240 L 353,237 L 349,235 L 347,232 L 340,228 L 337,225 L 332,225 L 328,219 L 328,217 L 332,214 L 332,212 L 331,211 L 328,211 L 326,209 L 323,196 L 328,188 L 329,183 L 334,176 L 334,173 L 340,164 L 333,164 L 324,170 L 320,170 L 318,168 L 318,165 L 316,165 L 312,161 L 311,156 L 314,152 L 311,148 L 311,140 L 314,137 L 318,130 L 318,126 L 320,120 L 319,118 L 320,112 L 317,106 L 317,103 L 324,100 L 326,98 L 326,94 L 323,91 L 312,87 L 307,82 L 303,83 L 300,80 L 297,79 L 295,77 L 295,74 Z"]},"Trentino-Alto Adige":{"label":[378,93],"paths":["M 453,19 L 445,21 L 442,23 L 437,23 L 427,28 L 425,30 L 419,31 L 417,33 L 414,33 L 411,30 L 408,31 L 404,28 L 401,32 L 398,32 L 394,29 L 394,30 L 389,34 L 383,31 L 378,32 L 376,34 L 371,34 L 369,37 L 366,38 L 366,42 L 364,45 L 364,49 L 358,57 L 355,57 L 354,56 L 342,56 L 339,54 L 335,54 L 333,52 L 333,50 L 335,48 L 332,47 L 331,45 L 326,45 L 322,49 L 320,48 L 315,48 L 313,52 L 314,56 L 312,59 L 310,68 L 314,68 L 318,73 L 316,81 L 314,83 L 311,82 L 314,85 L 317,85 L 324,88 L 329,93 L 329,98 L 325,103 L 320,104 L 323,111 L 323,115 L 322,116 L 323,121 L 321,127 L 322,129 L 317,138 L 314,141 L 314,147 L 317,151 L 317,153 L 314,157 L 315,160 L 321,164 L 321,167 L 325,166 L 332,161 L 344,160 L 349,164 L 348,165 L 348,170 L 345,176 L 348,180 L 352,181 L 354,180 L 355,178 L 358,178 L 360,180 L 361,179 L 364,179 L 367,175 L 367,168 L 371,163 L 372,155 L 375,151 L 378,151 L 381,154 L 383,147 L 387,144 L 390,145 L 393,143 L 395,140 L 397,140 L 403,147 L 406,147 L 409,145 L 409,141 L 408,140 L 409,133 L 412,130 L 424,129 L 428,125 L 427,115 L 424,113 L 422,113 L 419,110 L 420,108 L 418,106 L 418,102 L 420,100 L 420,96 L 424,93 L 425,91 L 423,91 L 420,88 L 420,86 L 427,81 L 429,81 L 431,83 L 434,80 L 434,76 L 439,70 L 439,65 L 441,63 L 445,64 L 450,68 L 454,73 L 460,70 L 466,70 L 469,66 L 464,60 L 463,55 L 460,55 L 457,53 L 457,48 L 458,47 L 457,42 L 451,44 L 450,41 L 446,38 L 448,35 L 445,32 L 444,26 L 446,24 L 452,22 Z"]},"Veneto":{"label":[423,182],"paths":["M 442,67 L 442,71 L 440,74 L 438,75 L 436,82 L 431,86 L 428,84 L 425,87 L 423,87 L 423,88 L 426,88 L 428,90 L 427,94 L 423,97 L 423,101 L 421,103 L 421,105 L 423,108 L 423,110 L 428,111 L 431,114 L 430,118 L 432,122 L 432,125 L 425,132 L 413,133 L 412,134 L 411,139 L 413,145 L 409,149 L 407,150 L 402,150 L 396,143 L 393,147 L 391,148 L 386,148 L 385,154 L 382,158 L 376,154 L 373,166 L 370,169 L 370,176 L 365,182 L 359,183 L 357,181 L 350,185 L 341,178 L 345,169 L 345,164 L 343,163 L 343,166 L 337,174 L 337,177 L 332,184 L 331,189 L 327,195 L 327,198 L 328,199 L 327,202 L 329,208 L 332,208 L 335,210 L 335,215 L 332,218 L 333,222 L 338,222 L 342,226 L 348,229 L 350,232 L 353,234 L 355,234 L 357,236 L 356,239 L 358,239 L 360,241 L 360,244 L 362,244 L 365,242 L 371,243 L 373,245 L 371,249 L 377,248 L 379,250 L 381,255 L 389,258 L 391,260 L 392,264 L 396,263 L 401,269 L 409,268 L 416,262 L 421,260 L 431,260 L 432,261 L 443,260 L 446,263 L 449,262 L 450,263 L 456,263 L 458,262 L 460,264 L 460,268 L 461,269 L 460,271 L 463,271 L 467,274 L 466,273 L 466,270 L 469,266 L 471,266 L 473,268 L 473,273 L 474,270 L 473,269 L 473,266 L 477,261 L 474,259 L 472,259 L 471,257 L 469,256 L 467,258 L 464,258 L 463,257 L 463,254 L 464,253 L 463,251 L 464,249 L 460,245 L 460,242 L 459,241 L 461,238 L 460,237 L 455,238 L 452,235 L 453,229 L 451,229 L 447,226 L 448,218 L 446,216 L 446,214 L 451,211 L 451,210 L 455,207 L 459,200 L 462,200 L 465,196 L 470,195 L 472,193 L 475,193 L 475,192 L 478,190 L 482,191 L 485,196 L 482,199 L 475,202 L 472,205 L 485,198 L 491,197 L 495,194 L 497,194 L 501,190 L 506,188 L 509,184 L 511,184 L 513,182 L 515,182 L 517,184 L 519,183 L 517,181 L 517,177 L 513,173 L 512,161 L 509,162 L 508,165 L 504,165 L 502,163 L 494,162 L 491,166 L 484,166 L 479,164 L 476,161 L 474,155 L 466,149 L 470,132 L 473,128 L 473,125 L 470,120 L 465,119 L 463,117 L 462,110 L 464,107 L 464,105 L 467,101 L 472,97 L 475,93 L 475,91 L 478,88 L 483,89 L 486,86 L 484,84 L 484,81 L 495,77 L 493,72 L 490,69 L 489,70 L 486,70 L 485,69 L 480,70 L 477,67 L 472,67 L 469,71 L 465,74 L 458,74 L 455,76 L 452,76 L 448,70 L 444,67 Z"]},"Friuli-Venezia Giulia":{"label":[520,124],"paths":["M 497,70 L 496,72 L 498,75 L 498,79 L 495,81 L 492,81 L 489,83 L 487,83 L 490,87 L 484,92 L 480,92 L 479,91 L 476,97 L 472,100 L 467,106 L 467,108 L 465,111 L 466,116 L 471,117 L 474,120 L 477,126 L 475,131 L 473,133 L 473,137 L 469,148 L 477,154 L 478,159 L 480,161 L 485,163 L 489,163 L 491,162 L 493,159 L 498,159 L 506,162 L 507,159 L 510,159 L 512,157 L 514,157 L 516,160 L 515,161 L 516,172 L 517,172 L 520,176 L 520,180 L 523,183 L 524,181 L 520,178 L 520,175 L 526,167 L 532,167 L 536,170 L 544,171 L 547,173 L 548,178 L 550,178 L 556,174 L 555,173 L 555,170 L 559,166 L 562,166 L 564,168 L 566,168 L 570,173 L 577,179 L 578,184 L 582,186 L 582,188 L 580,189 L 583,189 L 586,185 L 581,181 L 579,175 L 578,174 L 575,174 L 568,168 L 564,168 L 560,162 L 561,156 L 563,152 L 565,151 L 565,147 L 562,147 L 558,149 L 554,146 L 552,143 L 554,140 L 553,136 L 561,131 L 567,124 L 566,123 L 560,123 L 558,120 L 556,121 L 552,120 L 549,122 L 547,120 L 547,116 L 544,109 L 549,105 L 549,101 L 550,100 L 554,99 L 556,96 L 560,95 L 562,91 L 565,91 L 566,90 L 569,91 L 571,88 L 570,87 L 570,84 L 564,82 L 561,83 L 559,81 L 556,81 L 555,80 L 554,81 L 550,81 L 547,79 L 544,79 L 542,81 L 539,81 L 538,80 L 533,81 L 525,76 L 521,76 L 520,77 L 516,77 L 511,75 L 503,76 L 500,72 Z"]},"Liguria":{"label":[168,340],"paths":["M 280,357 L 277,357 L 272,352 L 267,353 L 265,351 L 265,349 L 267,347 L 263,349 L 260,346 L 260,341 L 261,339 L 257,336 L 255,336 L 253,334 L 252,330 L 248,330 L 246,327 L 247,322 L 239,323 L 234,326 L 232,326 L 229,323 L 230,319 L 235,312 L 234,309 L 230,309 L 228,306 L 226,308 L 220,308 L 216,304 L 212,305 L 210,307 L 204,307 L 201,302 L 197,301 L 194,297 L 192,297 L 188,300 L 188,306 L 186,308 L 181,309 L 177,314 L 171,314 L 168,317 L 154,313 L 152,314 L 147,320 L 144,320 L 140,316 L 136,315 L 134,317 L 133,323 L 129,327 L 129,331 L 124,335 L 122,338 L 123,350 L 120,353 L 115,353 L 114,354 L 115,358 L 113,360 L 110,359 L 101,359 L 97,356 L 96,357 L 97,361 L 93,366 L 93,369 L 89,373 L 85,375 L 84,378 L 80,381 L 79,383 L 82,390 L 85,389 L 88,391 L 89,390 L 92,390 L 93,388 L 99,387 L 101,385 L 102,386 L 110,385 L 116,380 L 122,378 L 129,373 L 128,369 L 130,366 L 134,363 L 134,357 L 136,353 L 140,349 L 143,349 L 150,345 L 150,342 L 152,340 L 151,336 L 154,334 L 154,332 L 157,329 L 161,329 L 168,323 L 170,323 L 173,320 L 180,318 L 181,319 L 186,319 L 188,321 L 192,320 L 195,323 L 198,322 L 202,324 L 205,324 L 212,330 L 212,332 L 215,328 L 219,328 L 227,332 L 231,337 L 243,344 L 248,350 L 251,349 L 262,359 L 261,356 L 263,354 L 265,354 L 270,357 L 272,360 L 275,362 L 277,362 Z"]},"Emilia-Romagna":{"label":[357,309],"paths":["M 219,268 L 219,269 L 225,274 L 225,277 L 220,283 L 223,288 L 223,291 L 222,293 L 219,295 L 217,294 L 213,295 L 212,301 L 213,302 L 214,301 L 217,301 L 221,305 L 225,305 L 227,303 L 229,303 L 231,306 L 235,306 L 238,309 L 238,313 L 232,323 L 238,320 L 247,319 L 250,321 L 250,327 L 253,326 L 253,324 L 256,318 L 267,313 L 272,313 L 277,320 L 279,325 L 290,330 L 297,336 L 301,334 L 309,339 L 323,354 L 326,354 L 332,350 L 336,350 L 347,358 L 349,358 L 354,351 L 355,351 L 360,357 L 361,356 L 363,357 L 372,356 L 370,355 L 370,352 L 373,349 L 379,345 L 383,346 L 386,343 L 389,343 L 393,349 L 395,350 L 397,349 L 402,350 L 403,351 L 403,355 L 404,354 L 409,354 L 411,352 L 415,355 L 414,364 L 410,367 L 410,370 L 409,371 L 411,375 L 411,379 L 418,385 L 421,389 L 423,390 L 424,389 L 429,389 L 439,395 L 442,395 L 442,390 L 445,386 L 443,383 L 445,381 L 445,379 L 447,376 L 453,377 L 457,372 L 467,372 L 475,366 L 477,366 L 479,368 L 478,373 L 481,376 L 481,378 L 479,381 L 481,381 L 485,386 L 489,382 L 495,381 L 493,378 L 493,375 L 495,373 L 489,370 L 481,361 L 470,351 L 468,348 L 468,346 L 463,339 L 462,330 L 459,328 L 460,322 L 456,312 L 457,300 L 455,299 L 455,293 L 453,289 L 453,286 L 456,279 L 455,276 L 457,274 L 457,266 L 454,266 L 453,267 L 451,266 L 445,266 L 442,263 L 439,264 L 438,263 L 435,264 L 421,263 L 414,267 L 410,271 L 400,272 L 396,267 L 388,267 L 385,264 L 374,264 L 373,265 L 359,264 L 352,266 L 349,270 L 346,270 L 341,267 L 336,266 L 334,264 L 334,260 L 333,259 L 325,268 L 323,269 L 316,269 L 308,263 L 302,263 L 292,256 L 278,254 L 276,252 L 274,246 L 273,245 L 270,246 L 267,243 L 268,248 L 267,249 L 264,249 L 262,251 L 259,251 L 257,248 L 256,248 L 256,251 L 255,252 L 250,251 L 246,248 L 246,244 L 243,246 L 241,246 L 239,244 L 240,247 L 238,249 L 235,247 L 229,249 L 225,255 L 223,263 Z"]},"Toscana":{"label":[366,426],"paths":["M 260,319 L 257,323 L 257,325 L 255,328 L 255,331 L 256,333 L 259,334 L 265,339 L 263,342 L 263,345 L 269,344 L 270,345 L 270,348 L 269,349 L 271,348 L 277,353 L 279,353 L 283,356 L 283,358 L 280,362 L 282,362 L 290,371 L 295,375 L 297,379 L 297,382 L 300,386 L 300,393 L 302,399 L 302,402 L 301,403 L 302,409 L 301,410 L 304,414 L 303,416 L 303,421 L 304,423 L 310,428 L 315,437 L 315,441 L 319,444 L 321,450 L 322,470 L 320,476 L 317,479 L 318,484 L 319,484 L 319,482 L 321,480 L 329,480 L 336,483 L 341,488 L 341,494 L 338,499 L 340,500 L 345,500 L 347,502 L 350,502 L 356,506 L 359,510 L 359,513 L 362,514 L 365,517 L 367,523 L 369,523 L 372,526 L 374,531 L 374,534 L 369,541 L 367,541 L 365,539 L 367,543 L 371,544 L 371,541 L 373,539 L 383,539 L 390,542 L 390,540 L 393,536 L 401,537 L 402,536 L 402,532 L 399,530 L 398,525 L 400,523 L 404,523 L 407,520 L 414,516 L 412,510 L 415,508 L 410,504 L 411,500 L 415,496 L 417,496 L 419,498 L 422,494 L 424,494 L 427,492 L 429,488 L 429,484 L 428,483 L 432,473 L 427,470 L 428,466 L 426,464 L 426,459 L 429,456 L 434,454 L 438,449 L 440,449 L 443,451 L 453,446 L 455,444 L 455,443 L 448,444 L 445,439 L 439,435 L 437,432 L 443,424 L 446,424 L 447,423 L 445,423 L 443,420 L 446,418 L 446,416 L 449,412 L 449,405 L 454,401 L 456,401 L 459,397 L 460,397 L 463,401 L 463,398 L 461,396 L 454,396 L 452,399 L 449,399 L 447,397 L 440,399 L 428,392 L 425,393 L 420,392 L 417,388 L 408,380 L 408,376 L 405,372 L 407,369 L 406,366 L 411,363 L 412,356 L 407,358 L 406,357 L 401,358 L 399,355 L 400,353 L 399,352 L 394,353 L 392,352 L 387,346 L 386,348 L 383,350 L 380,348 L 373,353 L 376,357 L 374,359 L 368,359 L 367,360 L 363,360 L 362,359 L 359,360 L 356,356 L 354,355 L 353,358 L 350,361 L 347,361 L 343,359 L 336,353 L 332,353 L 327,357 L 322,357 L 317,351 L 303,338 L 296,339 L 289,333 L 278,328 L 275,325 L 275,323 L 271,318 L 271,316 L 268,316 L 265,318 Z"]},"Marche":{"label":[524,438],"paths":["M 448,380 L 447,383 L 448,387 L 445,390 L 445,394 L 448,394 L 451,396 L 451,395 L 448,393 L 448,391 L 451,388 L 455,388 L 457,390 L 456,393 L 459,393 L 460,392 L 462,393 L 467,399 L 464,405 L 462,405 L 460,403 L 460,401 L 458,403 L 452,406 L 452,410 L 456,412 L 464,410 L 466,412 L 466,416 L 463,420 L 465,421 L 466,420 L 468,421 L 473,421 L 481,431 L 485,428 L 490,429 L 493,426 L 496,429 L 497,438 L 501,442 L 502,448 L 506,457 L 504,464 L 506,467 L 506,470 L 509,474 L 509,478 L 511,484 L 514,485 L 516,488 L 519,484 L 521,484 L 525,486 L 526,488 L 530,491 L 535,490 L 538,492 L 538,497 L 532,505 L 538,505 L 541,507 L 541,509 L 543,511 L 545,511 L 552,506 L 552,503 L 557,496 L 559,495 L 565,495 L 568,497 L 570,497 L 578,490 L 583,487 L 586,487 L 581,474 L 581,466 L 577,460 L 576,452 L 572,446 L 567,431 L 564,427 L 565,425 L 564,424 L 564,418 L 560,416 L 556,411 L 555,412 L 550,412 L 546,409 L 539,406 L 524,393 L 521,389 L 511,382 L 508,378 L 499,374 L 496,376 L 498,382 L 494,385 L 490,385 L 486,389 L 484,389 L 482,386 L 479,384 L 477,385 L 475,383 L 476,380 L 474,382 L 469,381 L 467,379 L 467,375 L 458,375 L 454,380 L 451,381 Z"]},"Umbria":{"label":[474,482],"paths":["M 451,413 L 448,420 L 450,422 L 450,424 L 447,427 L 444,427 L 441,432 L 448,438 L 449,441 L 457,440 L 459,444 L 455,448 L 444,454 L 442,454 L 439,452 L 435,457 L 429,460 L 429,463 L 431,466 L 430,469 L 433,470 L 435,472 L 435,474 L 432,480 L 432,489 L 430,493 L 427,495 L 427,498 L 434,502 L 434,504 L 430,507 L 430,509 L 431,509 L 432,511 L 434,511 L 439,515 L 446,509 L 450,511 L 454,515 L 459,530 L 469,529 L 471,531 L 470,537 L 472,539 L 472,544 L 476,546 L 478,549 L 478,548 L 482,545 L 482,537 L 485,535 L 489,539 L 493,536 L 492,535 L 493,531 L 498,528 L 497,526 L 500,524 L 507,516 L 514,515 L 516,513 L 521,513 L 526,510 L 529,505 L 529,503 L 535,496 L 535,493 L 529,494 L 520,487 L 519,489 L 515,492 L 513,489 L 508,485 L 506,479 L 506,475 L 503,471 L 501,465 L 501,461 L 502,460 L 501,452 L 498,447 L 498,443 L 494,439 L 493,430 L 492,430 L 491,432 L 486,431 L 483,434 L 480,434 L 477,432 L 476,429 L 472,424 L 469,425 L 468,424 L 464,424 L 459,420 L 459,419 L 463,416 L 463,413 L 459,415 L 455,415 L 453,413 Z"]},"Lazio":{"label":[496,587],"paths":["M 414,501 L 414,504 L 419,508 L 419,509 L 416,511 L 418,516 L 416,519 L 409,522 L 405,526 L 402,526 L 402,529 L 405,531 L 405,537 L 402,540 L 396,540 L 394,539 L 394,542 L 393,543 L 403,548 L 412,557 L 415,562 L 415,564 L 417,566 L 417,569 L 423,577 L 424,580 L 429,579 L 433,581 L 438,585 L 442,590 L 447,592 L 450,595 L 450,597 L 454,603 L 454,606 L 456,609 L 456,611 L 468,618 L 474,626 L 481,633 L 486,642 L 490,641 L 497,646 L 498,645 L 503,645 L 509,648 L 517,656 L 521,666 L 523,666 L 527,661 L 531,659 L 539,659 L 540,658 L 545,659 L 555,665 L 558,665 L 559,666 L 561,663 L 564,662 L 570,662 L 576,665 L 581,664 L 585,660 L 585,655 L 584,654 L 585,653 L 584,647 L 589,644 L 595,631 L 595,625 L 594,623 L 591,621 L 590,617 L 586,614 L 582,614 L 581,613 L 579,615 L 577,615 L 574,612 L 573,609 L 572,610 L 569,608 L 569,610 L 567,611 L 565,614 L 560,614 L 554,609 L 551,609 L 544,604 L 545,598 L 541,595 L 539,595 L 537,593 L 537,590 L 535,588 L 529,587 L 524,583 L 519,586 L 516,582 L 516,573 L 523,567 L 527,567 L 533,572 L 532,570 L 534,568 L 538,571 L 540,571 L 540,566 L 543,562 L 532,557 L 529,551 L 529,546 L 528,545 L 529,543 L 522,536 L 523,534 L 526,532 L 525,528 L 530,520 L 532,519 L 538,519 L 541,521 L 545,518 L 545,516 L 538,510 L 538,508 L 531,508 L 527,513 L 522,516 L 517,516 L 514,518 L 511,518 L 507,520 L 505,523 L 501,526 L 501,529 L 498,532 L 495,533 L 496,537 L 490,542 L 486,541 L 485,539 L 485,546 L 481,549 L 479,552 L 477,552 L 469,545 L 469,540 L 467,538 L 468,532 L 464,534 L 458,533 L 455,530 L 454,523 L 451,516 L 449,514 L 445,513 L 444,515 L 440,518 L 437,518 L 427,510 L 426,507 L 431,503 L 427,502 L 424,499 L 424,497 L 423,497 L 420,501 L 418,501 L 416,499 Z"]},"Abruzzo":{"label":[584,561],"paths":["M 531,523 L 528,528 L 529,529 L 529,533 L 526,535 L 526,536 L 530,539 L 532,542 L 532,550 L 534,553 L 534,555 L 536,555 L 544,559 L 547,563 L 543,566 L 543,572 L 541,574 L 536,574 L 535,576 L 533,576 L 526,570 L 524,570 L 519,574 L 520,582 L 522,580 L 525,580 L 530,584 L 536,585 L 540,589 L 540,592 L 542,592 L 548,597 L 548,601 L 547,602 L 550,605 L 555,606 L 561,611 L 563,611 L 566,609 L 566,607 L 570,604 L 572,606 L 574,606 L 577,609 L 578,612 L 580,610 L 588,611 L 591,613 L 593,618 L 596,616 L 600,618 L 600,616 L 603,613 L 606,615 L 609,611 L 611,611 L 607,607 L 606,601 L 609,598 L 611,598 L 613,600 L 614,597 L 617,594 L 621,594 L 624,597 L 626,595 L 630,597 L 633,600 L 635,609 L 640,606 L 640,604 L 642,602 L 642,599 L 646,596 L 648,591 L 655,582 L 656,578 L 651,574 L 651,568 L 639,563 L 634,558 L 633,555 L 628,551 L 626,547 L 620,543 L 618,543 L 611,534 L 604,528 L 603,525 L 599,522 L 597,516 L 593,510 L 593,508 L 591,505 L 591,502 L 588,497 L 586,490 L 584,490 L 579,493 L 570,501 L 564,498 L 558,499 L 555,504 L 555,507 L 548,513 L 546,513 L 549,517 L 544,523 L 540,524 L 537,522 Z"]},"Molise":{"label":[643,619],"paths":["M 685,594 L 682,594 L 678,591 L 675,587 L 669,584 L 666,584 L 659,580 L 657,585 L 653,589 L 649,597 L 646,599 L 646,601 L 643,605 L 643,607 L 635,613 L 633,612 L 631,608 L 630,601 L 627,599 L 622,600 L 620,597 L 618,597 L 614,603 L 612,603 L 610,601 L 609,604 L 614,610 L 614,612 L 612,614 L 610,614 L 607,618 L 603,617 L 603,620 L 602,621 L 596,620 L 596,622 L 598,624 L 598,632 L 595,639 L 598,644 L 598,648 L 599,649 L 603,648 L 601,641 L 605,636 L 610,636 L 611,637 L 619,638 L 624,643 L 630,645 L 633,648 L 641,649 L 642,650 L 645,650 L 650,647 L 655,640 L 658,640 L 660,643 L 663,643 L 668,638 L 670,638 L 669,636 L 670,623 L 672,621 L 674,621 L 678,624 L 678,623 L 686,616 L 683,614 L 681,610 L 681,605 Z"]},"Campania":{"label":[663,705],"paths":["M 593,642 L 592,645 L 588,648 L 588,657 L 589,658 L 588,661 L 582,667 L 579,668 L 583,671 L 590,682 L 591,688 L 596,694 L 602,707 L 604,706 L 610,710 L 615,706 L 619,706 L 622,708 L 629,716 L 630,715 L 633,717 L 635,720 L 635,723 L 631,726 L 628,731 L 623,732 L 623,734 L 625,732 L 632,730 L 634,727 L 638,727 L 640,729 L 642,729 L 646,726 L 650,727 L 651,724 L 658,724 L 660,725 L 669,736 L 671,743 L 676,752 L 676,756 L 677,757 L 676,759 L 672,762 L 672,767 L 669,769 L 669,770 L 672,769 L 678,776 L 682,776 L 683,775 L 684,776 L 687,776 L 689,778 L 689,780 L 694,782 L 703,793 L 709,794 L 714,787 L 719,785 L 725,786 L 727,789 L 728,789 L 728,784 L 730,780 L 731,773 L 733,771 L 736,771 L 738,769 L 738,764 L 737,763 L 734,763 L 730,759 L 729,754 L 722,748 L 720,744 L 718,743 L 713,737 L 711,732 L 712,726 L 705,721 L 703,716 L 704,713 L 703,711 L 701,710 L 701,707 L 706,702 L 711,702 L 713,703 L 713,701 L 715,700 L 719,695 L 719,691 L 717,685 L 713,684 L 708,681 L 704,683 L 699,683 L 694,680 L 692,673 L 693,664 L 689,662 L 686,662 L 685,663 L 682,660 L 681,657 L 678,654 L 678,652 L 680,649 L 680,646 L 674,641 L 669,641 L 664,646 L 659,646 L 657,643 L 651,650 L 646,653 L 633,651 L 629,648 L 623,646 L 618,641 L 615,641 L 610,639 L 606,639 L 604,642 L 607,649 L 602,652 L 597,652 L 595,649 L 595,645 Z"]},"Puglia":{"label":[803,691],"paths":["M 688,594 L 684,606 L 684,609 L 686,613 L 689,615 L 689,618 L 685,620 L 681,625 L 678,627 L 676,627 L 674,625 L 672,635 L 674,638 L 683,645 L 683,650 L 681,653 L 685,659 L 693,660 L 696,663 L 696,671 L 695,672 L 697,679 L 703,680 L 709,678 L 714,681 L 716,681 L 718,683 L 723,680 L 738,680 L 746,674 L 760,687 L 760,690 L 754,693 L 763,697 L 770,696 L 773,698 L 776,702 L 776,707 L 784,715 L 791,719 L 793,719 L 797,715 L 800,716 L 805,715 L 808,716 L 811,719 L 815,725 L 812,731 L 812,736 L 814,740 L 813,744 L 814,745 L 818,745 L 823,752 L 833,742 L 840,739 L 844,739 L 847,740 L 850,744 L 853,744 L 856,747 L 856,751 L 854,752 L 866,758 L 868,760 L 870,760 L 874,763 L 891,762 L 892,763 L 897,763 L 900,765 L 903,764 L 908,768 L 909,776 L 910,776 L 916,783 L 916,788 L 915,789 L 917,792 L 916,797 L 920,803 L 924,805 L 928,809 L 936,810 L 941,815 L 943,812 L 943,802 L 945,799 L 945,796 L 947,792 L 950,790 L 950,786 L 952,785 L 952,782 L 950,779 L 950,775 L 946,766 L 942,761 L 933,753 L 930,748 L 927,748 L 924,746 L 915,737 L 916,734 L 913,730 L 911,730 L 909,728 L 909,726 L 907,727 L 901,726 L 891,718 L 878,714 L 872,711 L 871,709 L 864,703 L 862,703 L 857,696 L 855,696 L 840,685 L 835,684 L 833,682 L 827,681 L 823,678 L 818,678 L 812,674 L 803,672 L 794,666 L 791,666 L 788,663 L 784,663 L 781,660 L 776,659 L 772,656 L 757,649 L 746,639 L 744,632 L 744,626 L 749,621 L 755,618 L 763,611 L 766,610 L 769,606 L 769,603 L 766,600 L 766,597 L 760,592 L 751,592 L 747,594 L 739,595 L 738,596 L 736,595 L 734,596 L 729,596 L 726,594 L 724,594 L 721,596 L 716,596 L 715,597 L 703,597 L 701,595 L 689,595 Z"]},"Basilicata":{"label":[761,742],"paths":["M 724,683 L 720,685 L 722,690 L 722,695 L 720,699 L 714,706 L 707,705 L 704,709 L 705,709 L 707,712 L 706,715 L 708,720 L 712,722 L 716,726 L 714,729 L 714,732 L 719,740 L 723,743 L 725,747 L 732,753 L 732,756 L 734,760 L 737,760 L 741,763 L 741,770 L 737,774 L 734,774 L 733,781 L 731,784 L 731,793 L 735,797 L 736,800 L 740,791 L 744,791 L 747,794 L 754,794 L 758,797 L 758,802 L 759,803 L 765,803 L 767,801 L 772,801 L 772,800 L 775,798 L 780,798 L 781,799 L 782,798 L 781,797 L 785,792 L 785,788 L 788,784 L 788,781 L 789,780 L 794,780 L 798,777 L 804,777 L 808,779 L 808,777 L 811,773 L 811,770 L 821,756 L 821,754 L 817,748 L 813,748 L 810,745 L 810,742 L 811,741 L 809,737 L 809,730 L 811,727 L 811,725 L 807,719 L 799,719 L 798,718 L 792,723 L 783,718 L 773,708 L 773,703 L 772,701 L 769,699 L 767,700 L 759,699 L 753,696 L 749,692 L 751,690 L 757,688 L 746,678 L 739,683 Z"]},"Calabria":{"label":[783,890],"paths":["M 803,780 L 799,780 L 795,783 L 791,783 L 791,785 L 788,789 L 789,791 L 785,796 L 785,799 L 782,802 L 775,802 L 773,804 L 768,804 L 765,806 L 758,806 L 755,803 L 755,798 L 753,797 L 746,797 L 743,794 L 741,794 L 741,797 L 738,802 L 738,804 L 740,807 L 740,811 L 738,813 L 741,818 L 741,826 L 743,829 L 743,832 L 746,836 L 746,840 L 753,847 L 757,853 L 757,856 L 759,859 L 760,871 L 761,872 L 761,884 L 763,887 L 764,895 L 768,899 L 768,901 L 774,906 L 775,912 L 772,922 L 767,928 L 761,929 L 756,927 L 751,931 L 749,931 L 743,935 L 743,936 L 749,941 L 751,944 L 751,947 L 745,959 L 742,970 L 737,974 L 732,975 L 727,978 L 727,981 L 729,985 L 729,987 L 727,989 L 728,999 L 734,1006 L 740,1007 L 743,1005 L 750,1005 L 751,1006 L 760,1005 L 764,998 L 767,984 L 781,968 L 787,966 L 797,958 L 799,955 L 799,947 L 798,946 L 798,935 L 797,934 L 796,926 L 800,921 L 800,919 L 805,913 L 809,912 L 815,907 L 817,907 L 828,902 L 832,902 L 836,905 L 842,905 L 846,902 L 846,898 L 848,896 L 843,892 L 843,889 L 841,887 L 842,881 L 844,879 L 844,875 L 841,872 L 842,862 L 844,858 L 834,849 L 827,847 L 821,842 L 816,836 L 813,837 L 811,836 L 808,836 L 807,837 L 802,836 L 797,833 L 794,829 L 795,825 L 792,822 L 791,816 L 797,806 L 803,799 L 801,795 L 801,788 L 805,781 Z"]},"Sicilia":{"label":[608,1041],"paths":["M 721,973 L 720,971 L 718,970 L 715,973 L 704,979 L 694,980 L 690,985 L 684,989 L 681,989 L 679,988 L 678,986 L 673,986 L 668,982 L 666,984 L 654,985 L 648,993 L 640,995 L 637,998 L 629,997 L 627,999 L 615,1001 L 614,1000 L 608,1000 L 607,999 L 601,1000 L 596,997 L 595,998 L 591,998 L 586,1002 L 580,1004 L 574,1004 L 571,1002 L 568,1002 L 564,1000 L 557,994 L 558,990 L 549,992 L 544,988 L 543,986 L 544,983 L 541,979 L 531,984 L 525,982 L 523,985 L 524,991 L 518,996 L 516,996 L 513,998 L 507,998 L 502,995 L 498,991 L 497,985 L 494,990 L 492,991 L 491,990 L 488,994 L 482,995 L 479,998 L 477,1005 L 472,1011 L 475,1015 L 474,1021 L 476,1024 L 476,1029 L 479,1032 L 484,1032 L 488,1037 L 488,1040 L 491,1042 L 496,1039 L 512,1040 L 516,1043 L 518,1047 L 522,1046 L 524,1048 L 531,1049 L 536,1054 L 538,1059 L 540,1059 L 543,1062 L 545,1062 L 552,1069 L 560,1069 L 563,1071 L 570,1079 L 572,1079 L 576,1083 L 582,1083 L 584,1084 L 587,1088 L 603,1087 L 613,1090 L 616,1092 L 617,1094 L 619,1094 L 629,1104 L 630,1108 L 633,1111 L 634,1117 L 637,1120 L 643,1120 L 646,1122 L 648,1122 L 651,1126 L 655,1125 L 657,1127 L 661,1125 L 667,1124 L 672,1128 L 678,1127 L 682,1132 L 684,1131 L 683,1125 L 681,1122 L 682,1114 L 685,1111 L 688,1104 L 695,1099 L 696,1097 L 695,1096 L 695,1093 L 697,1092 L 697,1090 L 695,1090 L 688,1082 L 688,1077 L 691,1073 L 686,1072 L 681,1068 L 681,1061 L 680,1060 L 681,1048 L 687,1042 L 689,1030 L 690,1029 L 689,1024 L 695,1018 L 696,1015 L 698,1014 L 698,1012 L 701,1009 L 703,1003 L 714,989 L 716,984 L 718,982 L 719,976 Z"]},"Sardegna":{"label":[200,785],"paths":["M 217,666 L 215,666 L 212,670 L 213,672 L 210,676 L 203,680 L 202,679 L 199,679 L 196,684 L 189,690 L 189,693 L 182,700 L 178,702 L 173,702 L 163,711 L 160,712 L 155,712 L 151,709 L 148,710 L 140,708 L 137,704 L 134,709 L 134,712 L 132,714 L 132,717 L 130,719 L 136,723 L 136,725 L 134,728 L 137,731 L 137,733 L 140,731 L 144,733 L 146,741 L 149,743 L 152,751 L 150,758 L 155,761 L 158,765 L 158,768 L 156,772 L 156,780 L 159,784 L 159,786 L 156,791 L 152,792 L 152,796 L 150,798 L 152,805 L 154,803 L 158,802 L 163,806 L 164,808 L 164,814 L 161,823 L 159,825 L 156,824 L 155,826 L 155,831 L 156,832 L 157,839 L 155,841 L 155,844 L 151,849 L 152,851 L 152,856 L 150,858 L 154,869 L 149,875 L 155,882 L 155,884 L 157,887 L 159,887 L 161,890 L 165,893 L 164,898 L 169,902 L 169,906 L 168,907 L 175,902 L 185,908 L 188,907 L 197,897 L 198,892 L 196,889 L 196,884 L 200,877 L 203,874 L 206,874 L 208,876 L 213,872 L 215,872 L 218,874 L 220,873 L 222,874 L 224,877 L 228,878 L 231,882 L 234,882 L 235,881 L 238,883 L 240,883 L 241,881 L 241,878 L 240,877 L 242,869 L 245,867 L 243,865 L 243,859 L 245,857 L 247,850 L 245,844 L 248,840 L 248,836 L 247,835 L 247,829 L 249,824 L 248,816 L 249,815 L 249,812 L 251,810 L 249,808 L 251,803 L 250,796 L 251,795 L 251,792 L 253,790 L 253,787 L 248,783 L 247,779 L 245,777 L 245,768 L 250,759 L 257,753 L 257,751 L 261,743 L 261,740 L 259,739 L 254,731 L 255,730 L 254,727 L 256,724 L 253,722 L 253,719 L 250,716 L 249,710 L 251,708 L 249,708 L 245,703 L 243,702 L 238,702 L 236,700 L 236,698 L 238,696 L 241,696 L 243,692 L 241,691 L 238,692 L 236,690 L 237,685 L 240,681 L 239,678 L 237,677 L 237,679 L 235,681 L 233,681 L 231,679 L 231,677 L 228,675 L 228,673 L 226,673 L 225,671 L 223,673 L 218,672 L 216,669 Z"]}};
 
+
+let currentMapRegion = 'Italia';
+const REGION_NAMES_EN = {
+  "Italia": "Italy", "Piemonte": "Piedmont", "Valle d'Aosta": "Aosta Valley", "Liguria": "Liguria", "Lombardia": "Lombardy",
+  "Trentino-Alto Adige": "Trentino-South Tyrol", "Veneto": "Veneto", "Friuli-Venezia Giulia": "Friuli Venezia Giulia",
+  "Emilia-Romagna": "Emilia-Romagna", "Toscana": "Tuscany", "Umbria": "Umbria", "Marche": "Marche", "Lazio": "Lazio",
+  "Abruzzo": "Abruzzo", "Molise": "Molise", "Campania": "Campania", "Puglia": "Apulia", "Basilicata": "Basilicata",
+  "Calabria": "Calabria", "Sicilia": "Sicily", "Sardegna": "Sardinia"
+};
+function displayRegionName(name) {
+  return lang === 'en' ? (REGION_NAMES_EN[name] || name) : name;
+}
+
 function mixColor(v) {
   const min = 24, max = 39;
   const t = Math.max(0, Math.min(1, (v - min) / (max - min)));
@@ -992,6 +983,7 @@ function mixColor(v) {
 }
 
 function updateMapPanel(name) {
+  currentMapRegion = name;
   const d = DATA.regionData[name] || { phsex:32, phy:20, sex:21, rape:5 };
   const regionName = document.getElementById('map-region-name');
   const mainValue = document.getElementById('map-main-value');
@@ -1000,14 +992,18 @@ function updateMapPanel(name) {
   const rape = document.getElementById('map-rape');
   const desc = document.getElementById('map-main-desc');
   if (!regionName || !mainValue || !phy || !sex || !rape || !desc) return;
-  regionName.textContent = name;
+  regionName.textContent = displayRegionName(name);
   mainValue.textContent = d.phsex;
   phy.textContent = d.phy + '%';
   sex.textContent = d.sex + '%';
   rape.textContent = d.rape + '%';
   desc.textContent = name === 'Italia'
-    ? 'Passa sopra una regione per visualizzare i dati. Il valore principale indica la quota di donne 16–70 anni che dichiarano di aver subìto violenza fisica o sessuale nel corso della vita.'
-    : `${name}: quota di donne 16–70 anni che dichiarano violenza fisica o sessuale nel corso della vita.`;
+    ? (lang === 'en'
+      ? 'Hover over a region to view the data. The main value shows the share of women aged 16–70 who report having experienced physical or sexual violence in their lifetime.'
+      : 'Passa sopra una regione per visualizzare i dati. Il valore principale indica la quota di donne 16–70 anni che dichiarano di aver subìto violenza fisica o sessuale nel corso della vita.')
+    : (lang === 'en'
+      ? `${displayRegionName(name)}: share of women aged 16–70 who report physical or sexual violence in their lifetime.`
+      : `${name}: quota di donne 16–70 anni che dichiarano violenza fisica o sessuale nel corso della vita.`);
 }
 
 function regionAbbr(name) {
@@ -1020,7 +1016,8 @@ function renderRegionRank() {
   const rank = document.getElementById('region-rank');
   if (!rank) return;
   const top = Object.entries(DATA.regionData).sort((a,b)=>b[1].phsex-a[1].phsex).slice(0,5);
-  rank.innerHTML = '<p class="bar-group-title">Valori più alti nella mappa</p>' + top.map(([name,d]) => `<div class="region-rank-row"><span>${name}</span><strong>${d.phsex}%</strong></div>`).join('');
+  const title = lang === 'en' ? 'Highest values on the map' : 'Valori più alti nella mappa';
+  rank.innerHTML = `<p class="bar-group-title">${title}</p>` + top.map(([name,d]) => `<div class="region-rank-row"><span>${displayRegionName(name)}</span><strong>${d.phsex}%</strong></div>`).join('');
 }
 
 function initRegionMap() {
